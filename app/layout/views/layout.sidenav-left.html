@@ -1,7 +1,13 @@
-<div ng-repeat="node in layout.nodes" md-theme="altTheme">
-    <md-toolbar class="md-hue-5">
+<div ng-repeat="node in layout.nodes">
+    <md-toolbar class="md-hue-3" style="min-height: 50px !important; height: 50px !important">
         <div class="md-toolbar-tools">
-            <span>{{node.Title}}</span>
+            <md-button>
+                <span>{{node.Title}}</span>
+            </md-button>
+            <span flex></span>
+            <md-button class="md-icon-button">
+                <i class="fa fa-caret-square-o-down fa-lg"></i>
+            </md-button>
         </div>
     </md-toolbar>
     <md-list>
@@ -14,7 +20,6 @@
                 </md-list-item>
             </md-list>
             </md-content>
-
         </md-list-item>
     </md-list>
 </div>
