@@ -1,34 +1,33 @@
 <div ng-controller="adminController as admin">
-    <h2>Admin view goes here</h2>
     <div layout="row">
         <div flex>
             <md-toolbar layout="row" class="md-hue-3">
                 <div class="md-toolbar-tools">
                     <span flex>Κατηγορίες</span>
-                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </md-button>
                 </div>
-
             </md-toolbar>
-            <md-list flex>
-                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
-                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes">
-                    <div layout="column">
-                        <md-button class="md-icon-button" aria-label="More">
-                            <i class="fa fa-chevron-up" aria-hidden="true"></i>
+            <md-list class="md-dense" flex>
+                <md-list-item ng-repeat="node in admin.nodes">
+                    <div layout="row">
+                        <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes,$index,$index-1)" ng-disabled="$first">
+                            <i class="fa fa-chevron-up" aria-hidden=""></i>
                         </md-button>
-                          <md-button class="md-icon-button" aria-label="More">
-                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        <md-button ng-click="admin.openSubCategory($index)">
+                            {{ node.Title }}
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes,$index,$index+1)" ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
                         </md-button>
                     </div>
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ node.Title }}</h3>
-                    </div>
+                    <!--<md-content layout="row" ng-show="toggle[$index]">
+                        <span>sdadassd </span>
+                    </md-content>-->
                 </md-list-item>
-                <md-divider></md-divider>
+            </md-list>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="space-between center">
                 <div layout="row" layout-align="start center">
-                    <md-input-container>
+                    <md-input-container style="padding-bottom:0px !important;">
                         <label>Νεά κατηγορία</label>
                         <input ng-model="user.title">
                     </md-input-container>
@@ -37,28 +36,44 @@
                             <label>Αρχική</label>
                         </md-checkbox>
                     </md-input>
+                    <md-button md-no-ink class="md-raised md-primary">color picker</md-button>
+
                 </div>
+                <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </md-button>
+            </div>
+            <md-divider></md-divider>
         </div>
         <div flex>
-            <md-toolbar layout="row" class="md-accent">
+            <md-toolbar layout="row" class="md-primary md-hue-2">
                 <div class="md-toolbar-tools">
                     <span flex>Υποκατηγορία 1</span>
-                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </md-button>
                 </div>
             </md-toolbar>
-            <md-list flex>
-                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
-                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes" ng-click="null">
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ node.Title }}</h3>
+            <md-list class="md-dense" flex>
+                <md-list-item ng-repeat="node in admin.nodes[admin.selected].Children">
+                    <div layout="row">
+                        <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index-1)" ng-disabled="$first">
+                            <i class="fa fa-chevron-up" aria-hidden=""></i>
+                        </md-button>
+                        <md-button ng-click="admin.subSelected=$index" flex>
+                            {{ node.Title }}
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index+1)" ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
+                        </md-button>
                     </div>
+                    <md-content layout="row" ng-show="toggle[$index]">
+                        <span>sdadassd </span>
+                    </md-content>
                 </md-list-item>
                 <md-divider></md-divider>
+            </md-list>
+            <div layout="row" layout-align="space-between center">
                 <div layout="row" layout-align="start center">
-                    <md-input-container>
-                        <label>Νεά υποκατηγορία</label>
+                    <md-input-container style="padding-bottom:0px !important;">
+                        <label>Νεά κατηγορία</label>
                         <input ng-model="user.title">
                     </md-input-container>
                     <md-input>
@@ -66,28 +81,44 @@
                             <label>Αρχική</label>
                         </md-checkbox>
                     </md-input>
+                    <md-button md-no-ink class="md-raised md-primary">color picker</md-button>
+
                 </div>
+                <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </md-button>
+            </div>
         </div>
         <div flex>
-            <md-toolbar layout="row" class="md-warn md-hue-2">
+            <md-toolbar layout="row" class="md-primary md-hue-2">
                 <div class="md-toolbar-tools">
                     <span flex>Υποκατηγορία 2</span>
-                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </md-button>
                 </div>
             </md-toolbar>
-            <md-list flex>
-                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
-                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes" ng-click="null">
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ node.Title }}</h3>
+            <md-list class="md-dense" flex>
+                <md-list-item ng-repeat="node in admin.nodes[admin.selected].Children[admin.subSelected].Children">
+                    <div layout="row">
+                        <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index-1)" ng-disabled="$first">
+                            <i class="fa fa-chevron-up" aria-hidden=""></i>
+                        </md-button>
+                        <md-button>
+                            {{ node.Title }}
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Move Down" 
+                        ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index+1)" ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
+                        </md-button>
                     </div>
+                    <!--<md-content layout="row" ng-show="toggle[$index]">
+                        <span>sdadassd </span>
+                    </md-content>-->
                 </md-list-item>
                 <md-divider></md-divider>
+            </md-list>
+            <div layout="row" layout-align="space-between center">
                 <div layout="row" layout-align="start center">
-                    <md-input-container>
-                        <label>Νεά υποκατηγορία</label>
+                    <md-input-container style="padding-bottom:0px !important;">
+                        <label>Νεά κατηγορία</label>
                         <input ng-model="user.title">
                     </md-input-container>
                     <md-input>
@@ -95,7 +126,13 @@
                             <label>Αρχική</label>
                         </md-checkbox>
                     </md-input>
+                    <md-button md-no-ink class="md-raised md-primary">color picker</md-button>
+
                 </div>
+                <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </md-button>
+            </div>
         </div>
     </div>
 </div>
