@@ -1,6 +1,6 @@
 import 'angular-material/angular-material.css!'
 import 'font-awesome/css/font-awesome.min.css!'
-//import 'assets/app.css!'
+import 'assets/app.css!'
 
 import angular from 'angular'
 import material from 'angular-material'
