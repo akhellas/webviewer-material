@@ -1,7 +1,101 @@
 <div ng-controller="adminController as admin">
     <h2>Admin view goes here</h2>
+    <div layout="row">
+        <div flex>
+            <md-toolbar layout="row" class="md-hue-3">
+                <div class="md-toolbar-tools">
+                    <span flex>Κατηγορίες</span>
+                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </md-button>
+                </div>
 
-    <div ng-repeat="node in admin.nodes">
-        {{node.Title}}
+            </md-toolbar>
+            <md-list flex>
+                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes">
+                    <div layout="column">
+                        <md-button class="md-icon-button" aria-label="More">
+                            <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                        </md-button>
+                          <md-button class="md-icon-button" aria-label="More">
+                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </md-button>
+                    </div>
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ node.Title }}</h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="start center">
+                    <md-input-container>
+                        <label>Νεά κατηγορία</label>
+                        <input ng-model="user.title">
+                    </md-input-container>
+                    <md-input>
+                        <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="admin.overviewShow" class="md-primary">
+                            <label>Αρχική</label>
+                        </md-checkbox>
+                    </md-input>
+                </div>
+        </div>
+        <div flex>
+            <md-toolbar layout="row" class="md-accent">
+                <div class="md-toolbar-tools">
+                    <span flex>Υποκατηγορία 1</span>
+                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-list flex>
+                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes" ng-click="null">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ node.Title }}</h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="start center">
+                    <md-input-container>
+                        <label>Νεά υποκατηγορία</label>
+                        <input ng-model="user.title">
+                    </md-input-container>
+                    <md-input>
+                        <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="admin.overviewShow" class="md-primary">
+                            <label>Αρχική</label>
+                        </md-checkbox>
+                    </md-input>
+                </div>
+        </div>
+        <div flex>
+            <md-toolbar layout="row" class="md-warn md-hue-2">
+                <div class="md-toolbar-tools">
+                    <span flex>Υποκατηγορία 2</span>
+                    <md-button class="md-fab md-mini" aria-label="Use Android" style="background-color:black">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-list flex>
+                <md-subheader class="md-no-sticky">Σύντομη περιγραφή</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="node in admin.nodes" ng-click="null">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ node.Title }}</h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="start center">
+                    <md-input-container>
+                        <label>Νεά υποκατηγορία</label>
+                        <input ng-model="user.title">
+                    </md-input-container>
+                    <md-input>
+                        <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="admin.overviewShow" class="md-primary">
+                            <label>Αρχική</label>
+                        </md-checkbox>
+                    </md-input>
+                </div>
+        </div>
     </div>
 </div>
