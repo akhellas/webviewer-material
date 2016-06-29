@@ -3,6 +3,7 @@
 }
 
 .marquee {
+    font-weight: bold;
     margin: 20 auto;
     overflow: hidden;
     white-space: nowrap;
@@ -16,6 +17,6 @@
 
 /* Make it move */
 @keyframes marquee {
-    0%   { text-indent: 105em }
+    0%   { text-indent: 80em }
     100% { text-indent: -105em }
 }
