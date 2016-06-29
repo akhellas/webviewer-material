@@ -1,7 +1,9 @@
 class layoutController {
-    constructor() {
+    constructor(nodesService) {
         this.isLeftOpen = true;
         this.isRightOpen = false;
+
+        this.nodes = nodesService.getNodes();
     }
 }
 
