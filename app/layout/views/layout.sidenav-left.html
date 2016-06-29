@@ -12,13 +12,17 @@
     </md-toolbar>
     <md-list>
         <md-list-item ng-repeat="child in node.Children">
-            <span>{{child.Title}}</span>
+            <md-button flex>
+                <span>{{child.Title}}</span>
+            </md-button>
             <md-content>
-            <md-list>
-                <md-list-item ng-repeat="grandChild in child.Children">
-                    <span>{{grandChild.Title}}</span>
-                </md-list-item>
-            </md-list>
+                <md-list>
+                    <md-list-item ng-repeat="grandChild in child.Children">
+                        <md-button>
+                            <span>{{grandChild.Title}}</span>
+                        </md-button>
+                    </md-list-item>
+                </md-list>
             </md-content>
         </md-list-item>
     </md-list>

@@ -42,7 +42,7 @@ class nodesService {
                     },
                     {
                         Id: '12',
-                        Title: 'Sub Category 12',
+                        Title: 'Sub Category 12 lets try long text',
                         Color: '',
                         InOverview: false,
                         Children: []
