@@ -1,22 +1,22 @@
 <div ng-repeat="node in layout.nodes">
     <md-toolbar class="md-hue-3" style="min-height: 50px !important; height: 50px !important">
         <div class="md-toolbar-tools">
-            <md-button aria-label="">
-                <span>{{node.Title}}</span>
+            <md-button aria-label="{{node.Title}}">
+                <span><strong>{{node.Title}}</strong></span>
             </md-button>
             <span flex></span>
-            <md-button class="md-icon-button" aria-label="" ng-click="toggle[$index] = !toggle[$index]">
+            <md-button class="md-icon-button" aria-label="s" ng-click="toggle[$index] = !toggle[$index]">
                 <i class="fa fa-lg" ng-class="{'fa-toggle-on': toggle[$index], 'fa-toggle-off': !toggle[$index]}"></i>
             </md-button>
         </div>
     </md-toolbar>
     <md-content ng-show="!toggle[$index]">
         <md-subheader ng-repeat-start="child in node.Children">
-            <md-button class="md-warn" aria-label="">
-                <span>{{child.Title}}</span>
+            <md-button class="md-warn" aria-label="{{child.Title}}">
+                <span><strong>{{child.Title}}</strong></span>
             </md-button>
             <span flex></span>
-            <md-button class="md-icon-button" aria-label="" ng-click="toggleC[$index] = !toggleC[$index]" ng-show="child.Children.length > 0">
+            <md-button class="md-icon-button" aria-label="Toggle" ng-click="toggleC[$index] = !toggleC[$index]" ng-show="child.Children.length > 0">
                 <i class="fa fa-lg" ng-class="{'fa-toggle-on': toggleC[$index], 'fa-toggle-off': !toggleC[$index]}"></i>
             </md-button>
         </md-subheader>

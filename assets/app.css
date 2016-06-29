@@ -1,3 +1,21 @@
 ._md-subheader-inner {
     padding: 0px !important;
 }
+
+.marquee {
+    margin: 20 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { text-indent: 105em }
+    100% { text-indent: -105em }
+}

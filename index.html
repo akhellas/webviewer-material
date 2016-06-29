@@ -19,8 +19,10 @@
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="Menu" ng-click="layout.isLeftOpen = !layout.isLeftOpen"><i class="fa fa-bars fa-lg"></i></md-button>
-            <span>MIS WebViewer</span>
-            <span flex></span>
+            <span style="margin-right: 30px">{{layout.appTitle}}</span>
+
+            <span flex class="marquee" style="color: yellow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante neque, pulvinar ut facilisis eu, consequat non risus. Curabitur vel mollis magna. Duis iaculis, massa.</span>
+            <span class="md-subhead" style="margin-right: 30px; margin-left: 30px">&copy 2016 HAFGS/ITC</span>
             <md-button class="md-icon-button" aria-label="Settings" ng-click="layout.isRightOpen = !layout.isRightOpen"><i class="fa fa-ellipsis-v fa-lg"></i></md-button>
         </div>
         <!--<md-tabs md-stretch-tabs="always">
