@@ -5,14 +5,17 @@
                 <span>{{node.Title}}</span>
             </md-button>
             <span flex></span>
-            <md-button class="md-icon-button">
+            <md-button class="md-icon-button" ng-click="toggle[$index] = !toggle[$index]">
                 <i class="fa fa-caret-square-o-down fa-lg"></i>
             </md-button>
         </div>
     </md-toolbar>
-    <md-list>
+    <md-content ng-show="!toggle[$index]">
+
+    </md-content>
+    <md-list ng-show="toggle[$index]">
         <md-list-item ng-repeat="child in node.Children">
-            <md-button flex>
+            <md-button>
                 <span>{{child.Title}}</span>
             </md-button>
             <md-content>

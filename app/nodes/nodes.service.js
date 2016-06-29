@@ -54,7 +54,15 @@ class nodesService {
                 Title: 'Category 2',
                 Color: '',
                 InOverview: false,
-                Children: []
+                Children: [
+                    {
+                        Id: '21',
+                        Title: 'Sub Category 21',
+                        Color: '',
+                        InOverview: false,
+                        Children: []
+                    }
+                ]
             }
         ]
     }
