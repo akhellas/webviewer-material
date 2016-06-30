@@ -1,171 +1,228 @@
 <div ng-controller="adminController as admin">
     <div layout="row">
         <div flex>
-            <md-toolbar class="md-hue-3">
-                <div class="md-toolbar-tools">
+            <md-toolbar class="md-hue-2">
+                <div class="md-toolbar-tools" layout-align="space-between center">
                     <span>Κατηγορίες</span>
+                    <md-fab-speed-dial md-direction="left" class="md-fling">
+                        <md-fab-trigger>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add" ng-click="admin.addCategory=!admin.addCategory">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="edit" ng-click="">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-warn md-mini" aria-label="delete" ng-click="">
+                                <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
                 </div>
             </md-toolbar>
+            <div ng-show="!admin.addCategory">
+                <md-card  md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Εισαγωγή Κατηγορίας</span>
+                            <md-input-container>
+                                <label>Κατηγορία</label>
+                                <input ng-model="admin.category" required minlength="5">
+                            </md-input-container>
+                            <div layout="row" layout-align="space-between center">
+                                <md-checkbox class="md-primary" ng-model="admin.overviewShow" aria-label="overviewShow">
+                                    Αρχική
+                                </md-checkbox>
+                                <md-button class="md-raised" ng-attr-style="background-color: rgb({{admin.color.red}},{{admin.color.green}},{{admin.color.blue}})"
+                                    ng-click="admin.openColorPicker=!admin.openColorPicker">ΧΡΩΜΑ</md-button>
+                            </div>
+                            <md-content style="margin: 16px; padding:16px">
+                                <md-slider-container>
+                                    <span>Red</span>
+                                    <md-slider flex min="0" max="255" ng-model="admin.color.red" aria-label="red" id="red-slider">
+                                    </md-slider>
+                                    <md-input-container>
+                                        <input flex type="number" ng-model="admin.color.red" aria-label="red" aria-controls="red-slider">
+                                    </md-input-container>
+                                </md-slider-container>
+                                <md-slider-container>
+                                    <span>Green</span>
+                                    <md-slider flex ng-model="admin.color.green" min="0" max="255" aria-label="green" id="green-slider" class="md-accent">
+                                    </md-slider>
+                                    <md-input-container>
+                                        <input flex type="number" ng-model="admin.color.green" aria-label="green" aria-controls="green-slider">
+                                    </md-input-container>
+                                </md-slider-container>
+                                <md-slider-container>
+                                    <span class="md-body-1">Blue</span>
+                                    <md-slider flex ng-model="admin.color.blue" min="0" max="255" aria-label="blue" id="blue-slider" class="md-primary">
+                                    </md-slider>
+                                    <md-input-container>
+                                        <input flex type="number" ng-model="admin.color.blue" aria-label="blue" aria-controls="blue-slider">
+                                    </md-input-container>
+                                </md-slider-container>
+                            </md-content>
+                            <md-card-actions layout="row" layout-align="end">
+                                <md-button class="md-raised md-primary" ng-click="admin.addCategory=!admind.addCategory">OK</md-button>
+                                <md-button class="md-raised md-warn" ng-click="admin.addCategory=!admin.addCategory">ΑΚΥΡΟ</md-button>
+                            </md-card-actions>
+                        </md-card-title-text>
+                    </md-card-title>
+            </div>
             <md-list class="md-dense" flex>
                 <md-list-item ng-repeat="node in admin.nodes">
-                    <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes,$index,$index-1)" ng-disabled="$first">
-                        <i class="fa fa-chevron-up" aria-hidden=""></i>
-                    </md-button>
-                    <div layout="column" flex ng-class="{'md-hue-3': admin.CategorySelected==$index}" class="red">
-                        <md-button ng-click="admin.openSubCategory($index)">
-                            {{ node.Title }}
+                    <div layout="row" flex ng-style="{'background-color':admin.categorySel==$index ? 'rgb(140,158,255)':null}">
+                        <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes,$index,$index-1)" ng-disabled="$first">
+                            <i class="fa fa-chevron-up" aria-hidden=""></i>
+                        </md-button>
+                        <div layout="column" flex>
+                            <md-button ng-click="admin.openSubCategory($index)">
+                                {{ node.Title }}
+                            </md-button>
+                        </div>
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes,$index,$index+1)" ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
                         </md-button>
                     </div>
-                    <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes,$index,$index+1)" ng-disabled="$last">
-                        <i class="fa fa-chevron-down" aria-hidden=""></i>
-                    </md-button>
                 </md-list-item>
             </md-list>
             <md-divider></md-divider>
-            <md-button class="md-fab md-primary md-hue-2 md-mini" aria-label="add" ng-click="admin.addCategory=!admin.addCategory" ng-show="admin.addCategory">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </md-button>
-            <div ng-show="!admin.addCategory">
-                <md-card md-theme="" md-theme-watch>
+        </div>
+        <div flex>
+             <md-toolbar class="md-hue-2">
+                <div class="md-toolbar-tools" layout-align="space-between center">
+                    <span>Κατηγορίες</span>
+                    <md-fab-speed-dial md-direction="left" class="md-fling" >
+                        <md-fab-trigger   ng-disabled="true">
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add" ng-click="admin.addSubCategory1=!admin.addSubCategory1">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="edit" ng-click="">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-warn md-mini" aria-label="delete" ng-click="">
+                                <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
+                </div>
+            </md-toolbar>
+            <div ng-show="!admin.addSubCategory1">
+                <md-card  md-theme-watch>
                     <md-card-title>
                         <md-card-title-text>
-                            <span class="md-headline">Εισαγωγή Κατηγορίας</span>
+                            <span class="md-headline">Εισαγωγή Υποκατηγορίας</span>
                             <md-input-container>
                                 <label>Κατηγορία</label>
-                                <input ng-model="admin.category" required md-maxlength="30" minlength="5">
-                                <div ng-messages="userForm.lastName.$error">
-                                    <!--<div ng-message="required">Υποχρεωτικό πεδίο</div>
-                                    <div ng-message="md-maxlength">Πολύ μεγάλος τίτλος</div>
-                                    <div ng-message="minlength">Πολύ μικρός τίτλος</div>-->
-                                </div>
+                                <input ng-model="admin.category" required minlength="5">
                             </md-input-container>
-                            <div layout="row">
+                            <div layout="row" layout-align="space-between center">
                                 <md-checkbox class="md-primary" ng-model="admin.overviewShow" aria-label="overviewShow">
                                     Αρχική
                                 </md-checkbox>
-                                <md-checkbox class="md-primary" ng-model="admin.overviewShow" aria-label="overviewShow">
-                                    Επιλογή Χρώματος
-                                </md-checkbox>
                             </div>
                             <md-card-actions layout="row" layout-align="end">
-                                <md-button class="md-raised md-primary" ng-click="admin.addCategory=!admind.addCategory">Εισαγωγή</md-button>
+                                <md-button class="md-raised md-primary" ng-click="admin.addSubCategory1=!admind.addSubCategory1">OK</md-button>
+                                <md-button class="md-raised md-warn" ng-click="admin.addSubCategory1=!admin.addSubCategory1">ΑΚΥΡΟ</md-button>
                             </md-card-actions>
                         </md-card-title-text>
                     </md-card-title>
             </div>
-        </div>
-        <div flex>
-            <md-toolbar class="md-primary md-hue-2">
-                <div class="md-toolbar-tools">
-                    <span>Υποκατηγορία 1</span>
-                    <span>: {{admin.nodes[admin.selected].Title}}</span>
-                </div>
-            </md-toolbar>
             <md-list class="md-dense" flex>
                 <md-list-item ng-repeat="node in admin.nodes[admin.selected].Children">
-                    <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index-1)"
-                        ng-disabled="$first">
-                        <i class="fa fa-chevron-up" aria-hidden=""></i>
-                    </md-button>
-                    <div layout="column" flex>
-                        <md-button ng-click="admin.subSelected=$index" flex>
-                            {{ node.Title }}
+                    <div layout="row" flex ng-style="{'background-color':admin.subCategory1Sel==$index ? 'rgb(140,158,255)':null}">
+                        <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index-1)"
+                            ng-disabled="$first">
+                            <i class="fa fa-chevron-up" aria-hidden=""></i>
+                        </md-button>
+                        <div layout="column" flex>
+                            <md-button ng-click="admin.subSelected=$index;admin.subCategory1Sel=$index" flex>
+                                {{ node.Title }}
+                            </md-button>
+                        </div>
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index+1)"
+                            ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
                         </md-button>
                     </div>
-                    <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children,$index,$index+1)"
-                        ng-disabled="$last">
-                        <i class="fa fa-chevron-down" aria-hidden=""></i>
-                    </md-button>
                 </md-list-item>
             </md-list>
-            <md-divider></md-divider>
-            <md-button class="md-fab md-primary md-hue-2 md-mini" aria-label="add" ng-click="admin.addSubCategory1=!admin.addSubCategory1"
-                ng-show="admin.addSubCategory1">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </md-button>
-            <div ng-show="!admin.addSubCategory1">
-                <md-card md-theme="" md-theme-watch>
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Εισαγωγή Κατηγορίας</span>
-                            <md-input-container>
-                                <label>Κατηγορία</label>
-                                <input ng-model="admin.category" required md-maxlength="30" minlength="5">
-                                <div ng-messages="userForm.lastName.$error">
-                                    <!--<div ng-message="required">Υποχρεωτικό πεδίο</div>
-                                    <div ng-message="md-maxlength">Πολύ μεγάλος τίτλος</div>
-                                    <div ng-message="minlength">Πολύ μικρός τίτλος</div>-->
-                                </div>
-                            </md-input-container>
-                            <div layout="row">
-                                <md-checkbox class="md-primary" ng-model="admin.overviewShow" aria-label="overviewShow">
-                                    Αρχική
-                                </md-checkbox>
-                            </div>
-                            <md-card-actions layout="row" layout-align="end">
-                                <md-button class="md-raised md-primary" ng-click="admin.addSubCategory1=!admin.addSubCategory1">Εισαγωγή</md-button>
-                            </md-card-actions>
-                        </md-card-title-text>
-                    </md-card-title>
-            </div>
+               <md-divider></md-divider>
         </div>
         <div flex>
-            <md-toolbar class="md-primary md-hue-2">
-                <div class="md-toolbar-tools">
-                    <span>Υποκατηγορία 2 </span>
-                    <span>:{{admin.nodes[admin.selected].Children[admin.subSelected].Title}}</span>
+             <md-toolbar class="md-hue-2">
+                <div class="md-toolbar-tools" layout-align="space-between center">
+                    <span>Κατηγορίες</span>
+                    <md-fab-speed-dial md-direction="left" class="md-fling">
+                        <md-fab-trigger>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="add" ng-click="admin.addSubCategory2=!admin.addSubCategory2">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-primary md-hue-3 md-mini" aria-label="edit" ng-click="">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </md-button>
+                            <md-button class="md-fab md-warn md-mini" aria-label="delete" ng-click="">
+                                <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
                 </div>
             </md-toolbar>
-            <md-list class="md-dense" flex>
-                <md-list-item ng-repeat="node in admin.nodes[admin.selected].Children[admin.subSelected].Children">
-                    <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index+1)"
-                        ng-disabled="$last">
-                        <i class="fa fa-chevron-down" aria-hidden=""></i>
-                    </md-button>
-                    <div layout="column" flex>
-                        <md-button>
-                            {{ node.Title }}
-                        </md-button>
-                    </div>
-                    <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index+1)"
-                        ng-disabled="$last">
-                        <i class="fa fa-chevron-down" aria-hidden=""></i>
-                    </md-button>
-                    <!--<md-content layout="row" ng-show="toggle[$index]">
-                        <span>sdadassd </span>
-                    </md-content>-->
-                </md-list-item>
-            </md-list>
-            <md-divider></md-divider>
-            <md-button class="md-fab md-primary md-hue-2 md-mini" aria-label="add" ng-click="admin.addSubCategory2=!admin.addSubCategory2"
-                ng-show="admin.addSubCategory2">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </md-button>
             <div ng-show="!admin.addSubCategory2">
-                <md-card md-theme="" md-theme-watch>
+                <md-card  md-theme-watch>
                     <md-card-title>
                         <md-card-title-text>
-                            <span class="md-headline">Εισαγωγή Κατηγορίας</span>
+                            <span class="md-headline">Εισαγωγή Περιεχόμενων</span>
                             <md-input-container>
-                                <label>Κατηγορία</label>
-                                <input ng-model="admin.category" required md-maxlength="30" minlength="5">
-                                <div ng-messages="userForm.lastName.$error">
-                                    <!--<div ng-message="required">Υποχρεωτικό πεδίο</div>
-                                    <div ng-message="md-maxlength">Πολύ μεγάλος τίτλος</div>
-                                    <div ng-message="minlength">Πολύ μικρός τίτλος</div>-->
-                                </div>
+                                <label>Περιεχόμενα</label>
+                                <input ng-model="admin.category" required minlength="5">
                             </md-input-container>
-                            <div layout="row">
+                            <div layout="row" layout-align="space-between center">
                                 <md-checkbox class="md-primary" ng-model="admin.overviewShow" aria-label="overviewShow">
                                     Αρχική
                                 </md-checkbox>
                             </div>
                             <md-card-actions layout="row" layout-align="end">
-                                <md-button class="md-raised md-primary" ng-click="admin.addSubCategory2=!admin.addSubCategory2">Εισαγωγή</md-button>
+                                <md-button class="md-raised md-primary" ng-click="admin.addSubCategory2=!admind.addSubCategory2">OK</md-button>
+                                <md-button class="md-raised md-warn" ng-click="admin.addSubCategory2=!admin.addSubCategory2">ΑΚΥΡΟ</md-button>
                             </md-card-actions>
                         </md-card-title-text>
                     </md-card-title>
             </div>
+            <md-list class="md-dense" flex>
+                <md-list-item ng-repeat="node in admin.nodes[admin.selected].Children[admin.subSelected].Children">
+                    <div layout="row" flex ng-style="{'background-color':admin.subCategory2Sel==$index ? 'rgb(140,158,255)':null}">
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index+1)"
+                            ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
+                        </md-button>
+                        <div layout="column" flex>
+                            <md-button ng-click="admin.subCategory2Sel=$index">
+                                {{ node.Title }}
+                            </md-button>
+                        </div>
+                        <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.selected].Children[admin.subSelected].Children,$index,$index+1)"
+                            ng-disabled="$last">
+                            <i class="fa fa-chevron-down" aria-hidden=""></i>
+                        </md-button>
+                    </div>
+                </md-list-item>
+            </md-list>
+            <md-divider></md-divider>
         </div>
     </div>
 </div>

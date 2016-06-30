@@ -4,16 +4,22 @@ class adminController {
         this.nodes = nodesService.getNodes();
         this.overviewShow = false;
 
-        this.CategorySelected;
+        this.categorySel;
+        this.subCategory1Sel;
+        this.subCategory2Sel;
+
+        this.openColorPicker = false;
 
         this.addCategory = true;
         this.addSubCategory1 = true;
         this.addSubCategory2 = true;
 
         this.openSubCategory = function (index) {
-            this.CategorySelected = index;
+            this.categorySel = index;
             this.selected = index;
             this.subSelected = null;
+            this.subCategory1Sel = null;
+            this.subCategory2Sel = null;
         };
 
         this.subSelected;
@@ -23,7 +29,15 @@ class adminController {
             nodes[index1] = nodes[index2];
             nodes[index2] = tmp;
         }
+
+        this.isOpen = false;
+        this.color = {
+            red: 255,
+            green: 255,
+            blue: 255
+        }
     }
+
 }
 
 export default adminController;
