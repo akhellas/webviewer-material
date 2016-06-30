@@ -3,28 +3,19 @@ import 'font-awesome/css/font-awesome.min.css!'
 import 'assets/app.css!'
 
 import angular from 'angular'
+import uiRouter from 'angular-ui-router'
 import material from 'angular-material'
 
-import main from './main'
-
-// Load loggers for injection and pre-angular debugging
-
-import { LogDecorator, ExternalLogger } from './utils/LogDecorator'
+import appModule from './app'
 
 angular
     .element( document )
     .ready( function() {
 
         let appName = 'webViewer';
-        let $log = new ExternalLogger();
-
-        $log = $log.getInstance( "BOOTSTRAP" );
-        $log.debug( "Initializing '{0}'", [ appName ] );
 
         let body = document.getElementsByTagName("body")[0];
-        let app  = angular
-                        .module( appName, [ material, main ] )
-                        .config( ['$provide', LogDecorator] );
+        let app  = angular.module( appName, [ uiRouter, material, appModule ] );
 
         angular.bootstrap( body, [ app.name ], { strictDi: false });
     });

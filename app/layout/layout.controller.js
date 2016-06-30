@@ -1,6 +1,7 @@
 class layoutController {
-    constructor(nodesService) {
-        
+    constructor($state, nodesService) {
+        this.$state = $state;
+
         this.appTitle = "MIS HandOver";
 
         this.isLeftOpen = true;

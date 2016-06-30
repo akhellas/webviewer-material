@@ -25,12 +25,6 @@
             <span class="md-subhead" style="margin-right: 30px; margin-left: 30px">&copy 2016 HAFGS/ITC</span>
             <md-button class="md-icon-button" aria-label="Settings" ng-click="layout.isRightOpen = !layout.isRightOpen"><i class="fa fa-ellipsis-v fa-lg"></i></md-button>
         </div>
-        <!--<md-tabs md-stretch-tabs="always">
-            <md-tab>Tab 1</md-tab>
-            <md-tab>Tab 2</md-tab>
-            <md-tab>Tab 3</md-tab>
-            <md-tab>Tab 4</md-tab>
-        </md-tabs>-->
     </md-toolbar>
 
     <div flex layout="row">
@@ -41,18 +35,13 @@
         </md-sidenav>
 
         <md-content flex layout-padding>
-            <div ng-include="'app/admin/views/admin.nodes.html'" layout="column">
-            </div>
+            <div ui-view></div>
         </md-content>
 
         <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-is-open="layout.isRightOpen">
-            <md-toolbar>
-                <div class="md-toolbar-tools">
-                    <span>Settings</span>
-                    <span flex></span>
-                    <md-button class="md-icon-button" aria-label="Settings" ng-click="layout.isRightOpen = !layout.isRightOpen"><i class="fa fa-times fa-lg"></i></md-button>
-                </div>
-            </md-toolbar>
+            <div ng-include="'app/layout/views/layout.sidenav-right.html'">
+            </div>
+
         </md-sidenav>
     </div>
 
