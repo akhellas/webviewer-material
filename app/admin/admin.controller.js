@@ -3,22 +3,20 @@ class adminController {
 
         this.nodes = nodesService.getNodes();
         this.overviewShow = false;
-
+        this.isEdit = false;
         this.categorySel;
         this.subCategory1Sel;
         this.subCategory2Sel;
-
-        this.openColorPicker = false;
 
         this.addCategory = true;
         this.addSubCategory1 = true;
         this.addSubCategory2 = true;
 
         this.openSubCategory = function (index) {
+            this.subCategory1Sel = null;
             this.categorySel = index;
             this.selected = index;
             this.subSelected = null;
-            this.subCategory1Sel = null;
             this.subCategory2Sel = null;
         };
 

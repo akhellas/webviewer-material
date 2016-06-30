@@ -53,7 +53,7 @@ class nodesService {
                 Id: '2',
                 Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
                 Color: '',
-                InOverview: false,
+                InOverview: true,
                 Children: [
                     {
                         Id: '21',
