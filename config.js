@@ -12,6 +12,7 @@ System.config({
     "angular-aria": "github:angular/bower-angular-aria@1.5.7",
     "angular-material": "github:angular/bower-material@master",
     "angular-messages": "github:angular/bower-angular-messages@1.5.7",
+    "angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "clean-css": "npm:clean-css@3.4.18",
@@ -24,6 +25,9 @@ System.config({
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.93",
+    "github:angular-ui/angular-ui-router-bower@0.3.1": {
+      "angular": "github:angular/bower-angular@1.5.7"
+    },
     "github:angular/bower-angular-animate@1.5.7": {
       "angular": "github:angular/bower-angular@1.5.7"
     },
