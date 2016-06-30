@@ -14,15 +14,15 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       template: '<ui-view/>'
     })
     .state('admin.nodes', {
-      url: "/admin/nodes",
+      url: "/nodes",
       templateUrl: "app/admin/views/admin.nodes.html"
     })
     .state('admin.roles', {
-      url: "/admin/roles",
+      url: "/roles",
       templateUrl: "app/admin/views/admin.roles.html"
     })
     .state('admin.users', {
-      url: "/admin/users",
+      url: "/users",
       templateUrl: "app/admin/views/admin.users.html"
     });
 }
