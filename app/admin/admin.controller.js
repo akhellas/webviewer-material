@@ -4,7 +4,14 @@ class adminController {
         this.nodes = nodesService.getNodes();
         this.overviewShow = false;
 
+        this.CategorySelected;
+
+        this.addCategory = true;
+        this.addSubCategory1 = true;
+        this.addSubCategory2 = true;
+
         this.openSubCategory = function (index) {
+            this.CategorySelected = index;
             this.selected = index;
             this.subSelected = null;
         };
