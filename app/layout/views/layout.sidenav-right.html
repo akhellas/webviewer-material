@@ -1,0 +1,30 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Διαχείριση</span>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="layout.isRightOpen = !layout.isRightOpen"><i class="fa fa-times fa-lg"></i></md-button>
+    </div>
+</md-toolbar>
+
+<md-list>
+    <md-list-item><md-button class="md-primary" ng-click="layout.$state.go('admin.nodes'); layout.isRightOpen = false">ΚΑΤΗΓΟΡΙΕΣ</md-button></md-list-item>
+    <md-divider></md-divider>
+    <md-list-item><md-button class="md-primary" ng-click="layout.$state.go('admin.roles'); layout.isRightOpen = false">ΡΟΛΟΙ</md-button></md-list-item>
+    <md-list-item><md-button class="md-primary" ng-click="layout.$state.go('admin.users'); layout.isRightOpen = false">ΧΡΗΣΤΕΣ</md-button></md-list-item>
+    <md-divider></md-divider>
+    <md-list-item><md-button class="md-primary" ng-click="layout.$state.go('admin.banner'); layout.isRightOpen = false">ΕΙΔΟΠΟΙΗΣΕΙΣ</md-button></md-list-item>
+</md-list>
+
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Ρυθμίσεις</span>
+    </div>
+</md-toolbar>
+
+<div class="inset">
+    <md-switch ng-model="s1" aria-label="Switch 1">Setting 1</md-switch>
+    <md-switch ng-model="s2" aria-label="Switch 2">Setting 2</md-switch>
+    <md-switch ng-model="s3" aria-label="Switch 3">Setting 3</md-switch>
+</div>
+
+
