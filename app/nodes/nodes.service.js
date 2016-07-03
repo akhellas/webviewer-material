@@ -5,10 +5,15 @@ class nodesService {
 
     getNodes() {
         return [
+
             {
                 Id: '1',
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
-                Color: '',
+                Color: {
+                    red: 100,
+                    green: 100,
+                    blue: 20
+                },
                 InOverview: false,
                 Children: [
                     {
@@ -47,12 +52,17 @@ class nodesService {
                         InOverview: false,
                         Children: []
                     }
-                ] 
+                ]
             },
             {
                 Id: '2',
                 Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
-                Color: '',
+                Color: {
+                    red: 100,
+                    green: 100,
+                    blue: 20
+                }
+                ,
                 InOverview: true,
                 Children: [
                     {
@@ -63,9 +73,38 @@ class nodesService {
                         Children: []
                     }
                 ]
+            },
+            {
+                Id: '3',
+                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
+                Color: {
+                    red: 150,
+                    green: 200,
+                    blue: 20
+
+                },
+                InOverview: true,
+                Children: [
+                    {
+                        Id: '21',
+                        Title: '2ΚΕΠ',
+                        Color: '',
+                        InOverview: false,
+                        Children: [{
+                            Id: '21',
+                            Title: '3ο ΣΑ ',
+                            Color: '',
+                            InOverview: false,
+                            Children: []
+                        }]
+                    }
+                ]
             }
+
         ]
+         
     }
+   
 }
 
 export default nodesService;
