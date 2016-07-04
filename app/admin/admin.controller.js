@@ -2,6 +2,7 @@ class adminController {
     constructor(adminService, nodesService) {
 
         this.nodes = nodesService.getNodes();
+        this.banner = nodesService.getbanner();
         // Variables for selected categories
         this.categorySel;
         this.subCategory1Sel;
@@ -14,6 +15,15 @@ class adminController {
         this.editSubCategory2 = true;
         //
 
+        // this.activeBanner = function (id) {
+        //     for (var item in this.banner) {
+        //         if (item.Id == id)
+        //             item.visible = !(item.visible);
+        //         else
+        //             item.visible = false;
+        //     }
+
+        // }
         this.openSubCategory = function (index) {
             this.subCategory1Sel = null;
             this.subCategory2Sel = null;

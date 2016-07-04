@@ -3,7 +3,9 @@ class nodesService {
         this.$http = $http;
     }
     getbanner() {
-        return [{ Message: 'test' }]
+        return [{ Id: 1, Description: 'Παραλαβή της Διοίκησης του 201 ΚΕΦΑ', visible: false },
+            { Id: 2, Description: 'Υγειονομικό Κλιμάκιο του 251ΓΝΑ στη Νήσο Κάρπαθο', visible: false },
+            { Id: 3, Description: '«2016 Έτος Ελλάδας – Ρωσίας» Εκδηλώσεις στο Πολεμικό Μουσείο Αθηνών', visible: true }]
     }
     getNodes() {
         return [
