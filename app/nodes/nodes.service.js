@@ -2,7 +2,9 @@ class nodesService {
     constructor($http) {
         this.$http = $http;
     }
-
+    getbanner() {
+        return [{ Message: 'test' }]
+    }
     getNodes() {
         return [
 
@@ -102,9 +104,9 @@ class nodesService {
             }
 
         ]
-         
+
     }
-   
+
 }
 
 export default nodesService;

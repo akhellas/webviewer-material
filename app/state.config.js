@@ -1,5 +1,5 @@
 function stateConfig($stateProvider, $urlRouterProvider) {
-  
+
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
@@ -16,6 +16,10 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('admin.nodes', {
       url: "/nodes",
       templateUrl: "app/admin/views/admin.nodes.html"
+    })
+    .state('admin.banner', {
+      url: "/banner",
+      templateUrl: "app/admin/views/admin.banner.html"
     })
     .state('admin.roles', {
       url: "/roles",
