@@ -5,9 +5,8 @@ class nodesService {
     }
 
     getbanner() {
-        return [{ Id: 1, Description: 'Παραλαβή της Διοίκησης του 201 ΚΕΦΑ', visible: false },
-            { Id: 2, Description: 'Υγειονομικό Κλιμάκιο του 251ΓΝΑ στη Νήσο Κάρπαθο', visible: false },
-            { Id: 3, Description: '«2016 Έτος Ελλάδας – Ρωσίας» Εκδηλώσεις στο Πολεμικό Μουσείο Αθηνών', visible: true }]
+        return [{ Id: 1, Description: 'Παραλαβή της Διοίκησης του 201 ΚΕΦΑ', visible: false }]
+
     }
     getNodes() {
         return [
@@ -106,6 +105,19 @@ class nodesService {
                 ]
             }
 
+        ];
+    }
+
+    getUserRoles() {
+        return [{
+            Id: 1, Title: 'ΚΕΠΙΧ', Description: 'bla', Rights: [{ _Id: '21', Edit: true, View: false }]
+        }, {
+                Id: 2, Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ', Description: 'bla', Rights: [{ _Id: '3', Edit: false, View: true }]
+            }, {
+                Id: 3, Title: 'ΗΓΕΣΙΑ', Description: 'bla', Rights: [{ _Id: '2', Edit: true, View: false }]
+            }, {
+                Id: 4, Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ', Description: 'bla', Rights: [{ _Id: '1', Edit: true, View: true }]
+            }
         ];
     }
 

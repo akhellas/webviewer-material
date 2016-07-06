@@ -7,17 +7,47 @@
                     <label>Banner</label>
                     <input required minlength="5">
                 </md-input-container>
-                <span class="md-title">Ιστορικό Τίτλων</span>
-                <md-list>
-                    <md-list-item ng-repeat="node in admin.banner"  flex>
-                        <md-checkbox class="md-primary" ng-model="node.visible" aria-label="visible" flex ng-click="admin.activeBanner(node.Id)">
-                            {{ node.Description }}
-                        </md-checkbox>
-                    </md-list-item>
-                </md-list>
-                <md-card-actions layout="row" layout-align="end">
+                <!--<md-input-container class="md-block" flex-gt-sm>
+                    <label>Υπερσύνδεσμος</label>
+                    <md-select ng-repeat="node in admin.nodes">
+                        <md-option>
+                            {{node.Title}}
+                        </md-option>
+                        <md-option ng-repeat-start="item in node.Children" value="{{item.Title}}">
+                            {{item.Title}}
+                        </md-option>
+                        <md-option ng-repeat-end ng-repeat="subitem in item.Children" value="{{subitem.Title}}">
+                            {{subitem.Title}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>-->
+                <md-card-actions layout="row" layout-align="space-between center">
+                    <md-button class="md-raised md-primary" ng-click="admin.openCategorys=!admin.openCategorys">Επιλογή υπερυνδέσμου &nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </md-button>
                     <md-button class="md-raised md-primary">ΑΠΟΘΗΚΕΥΣΗ</md-button>
                 </md-card-actions>
             </md-card-title-text>
         </md-card-title>
+    </md-card>
+    <md-card md-theme-watch flex-xs flex-gt-xs="50">
+        <md-list class="md-dense" ng-repeat="node in admin.nodes" ng-show="admin.openCategorys">
+            <md-list-item>
+                <div class="md-list-item-text" layout="row">
+                    <md-checkbox>{{node.Title}}</md-checkbox>
+                </div>
+            </md-list-item>
+            <md-list-item ng-repeat-start="item in node.Children">
+                <div class="md-list-item-text" layout="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <md-checkbox>{{item.Title}}</md-checkbox>
+                </div>
+            </md-list-item>
+            <md-list-item ng-repeat-end ng-repeat="subitem in item.Children">
+                <div class="md-list-item-text" layout="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <md-checkbox>{{subitem.Title}}</md-checkbox>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card>
 </div>
