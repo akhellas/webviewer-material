@@ -1,7 +1,30 @@
 class nodesService {
-    constructor($http) {
-        this.$http = $http;
-        this.nodes = this.getNodes();
+    constructor() {
+        this._nodes = new Map();
+
+        this.getNodes();
+    }
+
+    get nodes() {
+        return Array.from(this._nodes.values());
+    }
+
+    insertNode(node) {
+        if (!this._nodes.has(node.Id)) {
+            this._nodes.set(node.Id, node);
+        }
+    }
+
+    updateNode(node) {
+        if (this._node.has(node.Id)) {
+            this._nodes.set(node.Id, node);
+        }
+    }
+
+    deleteNode(node) {
+        if (this._node.has(node.Id)) {
+            this._nodes.delete(node.Id);
+        }
     }
 
     getbanner() {
@@ -9,7 +32,7 @@ class nodesService {
 
     }
     getNodes() {
-        return [
+        let mock = [
             {
                 Id: '1',
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
@@ -106,21 +129,11 @@ class nodesService {
             }
 
         ];
-    }
 
-    getUserRoles() {
-        return [{
-            Id: 1, Title: 'ΚΕΠΙΧ', Description: 'bla', Rights: [{ _Id: '21', Edit: true, View: false }]
-        }, {
-                Id: 2, Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ', Description: 'bla', Rights: [{ _Id: '3', Edit: false, View: true }]
-            }, {
-                Id: 3, Title: 'ΗΓΕΣΙΑ', Description: 'bla', Rights: [{ _Id: '2', Edit: true, View: false }]
-            }, {
-                Id: 4, Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ', Description: 'bla', Rights: [{ _Id: '1', Edit: true, View: true }]
-            }
-        ];
+        for (let m in mock) {
+            this._nodes.set(mock[m].Id, mock[m]);
+        }
     }
-
 }
 
 export default nodesService;

@@ -1,6 +1,6 @@
 class nodesController {
     constructor(nodesService) {
-        this.nodes = nodesService.getNodes();
+        this.nodes = nodesService.nodes();
     }
 }
 
