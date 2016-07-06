@@ -14,9 +14,9 @@ class nodesService {
                 Id: '1',
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
                 Color: {
-                    red: 100,
-                    green: 100,
-                    blue: 20
+                    red: 80,
+                    green: 140,
+                    blue: 255
                 },
                 InOverview: false,
                 Children: [
@@ -62,9 +62,9 @@ class nodesService {
                 Id: '2',
                 Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
                 Color: {
-                    red: 100,
-                    green: 100,
-                    blue: 20
+                    red: 80,
+                    green: 140,
+                    blue: 255
                 }
                 ,
                 InOverview: true,
@@ -82,9 +82,9 @@ class nodesService {
                 Id: '3',
                 Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
                 Color: {
-                    red: 150,
-                    green: 200,
-                    blue: 20
+                    red: 80,
+                    green: 140,
+                    blue: 255
 
                 },
                 InOverview: true,
