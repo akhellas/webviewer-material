@@ -1,7 +1,9 @@
 class nodesService {
     constructor($http) {
         this.$http = $http;
+        this.nodes = this.getNodes();
     }
+
     getbanner() {
         return [{ Id: 1, Description: 'Παραλαβή της Διοίκησης του 201 ΚΕΦΑ', visible: false },
             { Id: 2, Description: 'Υγειονομικό Κλιμάκιο του 251ΓΝΑ στη Νήσο Κάρπαθο', visible: false },
@@ -9,7 +11,6 @@ class nodesService {
     }
     getNodes() {
         return [
-
             {
                 Id: '1',
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
@@ -105,8 +106,7 @@ class nodesService {
                 ]
             }
 
-        ]
-
+        ];
     }
 
 }
