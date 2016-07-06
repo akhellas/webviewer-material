@@ -1,7 +1,9 @@
 class rolesController {
     constructor(adminService, nodesService) {
-        this.nodeRights = nodesService.getUserRoles();
+
         this.nodeSelected;
+        this.nodeRights = nodesService.roles;
+
 
         this.addGroup = function () {
             this.nodeRights.push({

@@ -7,7 +7,7 @@ class layoutController {
         this.isLeftOpen = true;
         this.isRightOpen = false;
 
-        this.nodes = nodesService.getNodes();
+        this.nodes = nodesService.nodes;
     }
 }
 
