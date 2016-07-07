@@ -5,7 +5,7 @@ class authService {
         
         this._users = new Map();
         this._roles = new Map();
-        
+
         this.getUsers();
         this.getRoles();
     }
