@@ -1,5 +1,5 @@
 class layoutController {
-    constructor($state, nodesService) {
+    constructor($state, toastService, nodesService) {
         this.$state = $state;
 
         this.appTitle = "MIS HandOver";
