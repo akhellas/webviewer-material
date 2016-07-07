@@ -5,10 +5,10 @@
         </div>
     </md-toolbar>
     <div layout="row">
-        <md-card md-theme-watch flex="20">
+        <md-card md-theme-watch flex="20" style="margin:0px!important">
             <div layout="row" layout-align="space-between center" style="padding:10px 10px 5px">
                 <label>Ρόλοι</label>
-                <md-button class=" md-fab md-mini md-primary " ng-click="admin.addGroup();admin.editOn=!admin.editOn" ng-disabled="admin.editOn"
+                <md-button class=" md-fab md-mini md-primary " ng-click="admin.addGroup();admin.editOn=!admin.editOn" ng-disabled="admin.editOn || admin.addright"
                     title="Προσθήκη Νέας Κατηγορίας"><i class="fa fa-plus " aria-hidden="true"></i></md-button>
             </div>
             <md-divider></md-divider>
@@ -23,7 +23,7 @@
                 </md-list-item>
             </md-list>
         </md-card>
-        <md-card md-theme-watch ng-hide="admin.nodeSelected==null" layout-padding layout="row" flex>
+        <md-card md-theme-watch style="margin:0px!important" ng-hide="admin.nodeSelected==null" layout-padding layout="row" flex>
             <div flex="30">
                 <md-toolbar layout-align="center" style="padding-left:10px">
                     <label> Διαχείριση Ρόλων : {{admin.nodeRights[admin.nodeSelected].Title}}</label>
@@ -44,9 +44,12 @@
                 <md-toolbar>
                     <div layout="row" layout-align="space-between center" style="padding:5px 5px 0px 5px">
                         <label>Διαχείριση Δικαιωμάτων</label>
-                        <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="admin.addright=!admin.addright;admin.editOn=!admin.editOn" ng-hide="admin.addright"
+                        <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="admin.addright=!admin.addright" ng-hide="admin.addright"
                             title="Προσθήκη Νέας Κατηγορίας"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></md-button>
-                        <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="admin.cancelAddCategory()" ng-show="admin.addright" title="Προσθήκη Νέας Κατηγορίας"><i class="fa fa-times fa-lg" aria-hidden="true"></i></md-button>
+                        <div ng-show="admin.addright">
+                            <md-button class="md-fab md-mini md-warn md-hue-3" ng-click="admin.pushRight()" title="Αποθήκευση"><i class="fa fa-check" aria-hidden="true"></i></md-button>
+                            <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="admin.cancelAddCategory()" title="Άκυρο"><i class="fa fa-times fa-lg" aria-hidden="true"></i></md-button>
+                        </div>
                     </div>
                 </md-toolbar>
                 <div layout="row" layout-align="space-between center" ng-show="admin.addright">
@@ -60,7 +63,6 @@
                     <md-input-container>
                         <md-checkbox class="md-primary" ng-model="admin.newRight.Edit" title="Επεξεργασία">Επεξεργασία</md-checkbox>
                         <md-checkbox class="md-primary" ng-model="admin.newRight.View" title="Προβολή">Προβολή</md-checkbox>
-                        <md-button class="md-primary md-hue-3" ng-click="admin.pushRight()" title="Προσθήκη">Αποθήκευση</md-button>
                     </md-input-container>
                 </div>
                 <md-list>

@@ -27,7 +27,6 @@ class rolesController {
                 View: this.newRight.View
             });
             this.addright = !this.addright;
-            this.editOn = !this.editOn;
             this.newRight = {
                 Edit: false, View: false
             };
@@ -38,7 +37,6 @@ class rolesController {
 
         this.cancelAddCategory = function () {
             this.addright = !this.addright;
-            this.editOn = !this.editOn;
             this.newRight = {
                 Edit: false,
                 View: false
@@ -48,8 +46,7 @@ class rolesController {
             this.editOn = false;
         }
     }
-
-
+    
 }
 
 export default rolesController;
