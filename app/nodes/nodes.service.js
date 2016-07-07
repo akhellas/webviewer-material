@@ -39,17 +39,15 @@ class nodesService {
             url: '/api/nodes'
         })
         .then( (response) => {
+            this._nodes = new Map();
             for (let m in response.data) {
                 this._nodes.set(response.data[m].Id, response.data[m]);
             }
-            console.log(this._nodes);
-
             this.toastService.info('Loaded nodes');
         })
         .catch( (error) => {
             this.toastService.error(error.data);
-        });       
-        
+        });
     }
 }
 
