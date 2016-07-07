@@ -16,7 +16,6 @@ class layoutController {
 
     nodesChanged(newValue, oldValue) {
         if (newValue != undefined && newValue != oldValue) {
-            console.log('out: ' + newValue);
             this.nodes = newValue;
         }
 
