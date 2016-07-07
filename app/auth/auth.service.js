@@ -1,5 +1,8 @@
 class authService {
-    constructor() {
+    constructor($http, toastService) {
+        this.$http = $http;
+        this.toastService = toastService;
+        
         this._users = new Map();
         this._roles = new Map();
         
@@ -9,6 +12,23 @@ class authService {
 
     get users() {
         return Array.from(this._users.values());
+    }
+
+    getUsers() {
+        this.$http({
+            method: 'GET',
+            url: '/api/users'
+        })
+        .then( (response) => {
+            this._users = new Map();
+            for (let m in response.data) {
+                this._users.set(response.data[m].Id, response.data[m]);
+            }
+            this.toastService.info('Loaded users');
+        })
+        .catch( (error) => {
+            this.toastService.error(error.data);
+        });
     }
 
     get roles() {
@@ -33,64 +53,21 @@ class authService {
         }
     }
 
-    getUsers() {
-        let mock = [
-            {
-                Id: '1',
-                Username: 'admin',
-                IsAdmin: true,
-                Name: 'administrator user'
-            },
-            {
-                Id: '2',
-                Username: 'user2',
-                IsAdmin: false,
-                Name: 'user 2'
-            },
-            {
-                Id: '3',
-                Username: 'user3',
-                IsAdmin: false,
-                Name: 'user 3'
-            }
-        ];
-        
-        for (let m in mock) {
-            this._users.set(mock[m].Id, mock[m]);
-        }
-    }
-
     getRoles() {
-        let mock = [
-            {
-                Id: '1',
-                Title: 'ΚΕΠΙΧ',
-                Description: 'bla',
-                Rights: [{ _Id: '21', Edit: true, View: false }]
-            },
-            {
-                Id: '2',
-                Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
-                Description: 'bla',
-                Rights: [{ _Id: '3', Edit: false, View: true }]
-            },
-            {
-                Id: '3',
-                Title: 'ΗΓΕΣΙΑ',
-                Description: 'bla',
-                Rights: [{ _Id: '2', Edit: true, View: false }]
-            },
-            {
-                Id: '4',
-                Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
-                Description: 'bla',
-                Rights: [{ _Id: '1', Edit: true, View: true }]
+        this.$http({
+            method: 'GET',
+            url: '/api/roles'
+        })
+        .then( (response) => {
+            this._roles = new Map();
+            for (let m in response.data) {
+                this._roles.set(response.data[m].Id, response.data[m]);
             }
-        ];
-
-        for (let m in mock) {
-            this._roles.set(mock[m].Id, mock[m]);
-        }
+            this.toastService.info('Loaded users');
+        })
+        .catch( (error) => {
+            this.toastService.error(error.data);
+        });
     }
 }
 

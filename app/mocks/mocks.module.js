@@ -1,7 +1,4 @@
-//import ngMockE2E from 'jspm_packages/github/angular/bower-angular-mocks@1.5.7/ngMockE2E.js'
 import 'angular-mocks'
-
-//import nodesMock from './nodes.mock'
 
 let mocks = angular.module('app.mocks', ['app', 'ngMockE2E']).name;
 
@@ -9,6 +6,60 @@ angular
     .module('app.mocks')
     .run(function ($httpBackend) {
         'ngInject'
+        
+        let users = [
+            {
+                Id: '1',
+                Username: 'admin',
+                IsAdmin: true,
+                Name: 'administrator user'
+            },
+            {
+                Id: '2',
+                Username: 'user2',
+                IsAdmin: false,
+                Name: 'user 2'
+            },
+            {
+                Id: '3',
+                Username: 'user3',
+                IsAdmin: false,
+                Name: 'user 3'
+            }
+        ];
+
+        $httpBackend.whenGET('/api/users')
+                    .respond(users);
+
+        let roles = [
+            {
+                Id: '1',
+                Title: 'ΚΕΠΙΧ',
+                Description: 'bla',
+                Rights: [{ _Id: '21', Edit: true, View: false }]
+            },
+            {
+                Id: '2',
+                Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
+                Description: 'bla',
+                Rights: [{ _Id: '3', Edit: false, View: true }]
+            },
+            {
+                Id: '3',
+                Title: 'ΗΓΕΣΙΑ',
+                Description: 'bla',
+                Rights: [{ _Id: '2', Edit: true, View: false }]
+            },
+            {
+                Id: '4',
+                Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
+                Description: 'bla',
+                Rights: [{ _Id: '1', Edit: true, View: true }]
+            }
+        ];
+        
+        $httpBackend.whenGET('/api/roles')
+                    .respond(roles);
 
         let nodes = [
             {
@@ -107,7 +158,6 @@ angular
             }
 
         ];
-
 
         $httpBackend.whenGET('/api/nodes')
                     .respond(nodes);
