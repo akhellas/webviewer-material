@@ -1,5 +1,11 @@
 class nodesService {
-    constructor() {
+    constructor($http, api, toastService) {
+        'ngInject'
+
+        this.$http = $http;
+        this.api = api;
+        this.toastService = toastService;
+
         this._nodes = new Map();
 
         this.getNodes();
@@ -27,112 +33,21 @@ class nodesService {
         }
     }
 
-    getbanner() {
-        return [{ Id: 1, Description: 'Παραλαβή της Διοίκησης του 201 ΚΕΦΑ', visible: false }]
-
-    }
     getNodes() {
-        let mock = [
-            {
-                Id: '1',
-                Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-                },
-                InOverview: false,
-                Children: [
-                    {
-                        Id: '11',
-                        Title: 'ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
-                        Color: '',
-                        InOverview: false,
-                        Children: [
-                            {
-                                Id: '111',
-                                Title: 'ΑΤΑ',
-                                Color: '',
-                                InOverview: false,
-                                Children: []
-                            },
-                            {
-                                Id: '112',
-                                Title: 'ΔΑΥ',
-                                Color: '',
-                                InOverview: false,
-                                Children: []
-                            },
-                            {
-                                Id: '113',
-                                Title: 'ΔΑΕ',
-                                Color: '',
-                                InOverview: false,
-                                Children: []
-                            }
-                        ]
-                    },
-                    {
-                        Id: '12',
-                        Title: 'ΠΤΗΣΕΙΣ ΝΑΤΟΙΚΩΝ ΧΩΡΩΝ',
-                        Color: '',
-                        InOverview: false,
-                        Children: []
-                    }
-                ]
-            },
-            {
-                Id: '2',
-                Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-                }
-                ,
-                InOverview: true,
-                Children: [
-                    {
-                        Id: '21',
-                        Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ',
-                        Color: '',
-                        InOverview: false,
-                        Children: []
-                    }
-                ]
-            },
-            {
-                Id: '3',
-                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-
-                },
-                InOverview: true,
-                Children: [
-                    {
-                        Id: '21',
-                        Title: '2ΚΕΠ',
-                        Color: '',
-                        InOverview: false,
-                        Children: [{
-                            Id: '21',
-                            Title: '3ο ΣΑ ',
-                            Color: '',
-                            InOverview: false,
-                            Children: []
-                        }]
-                    }
-                ]
+        this.$http({
+            method: 'GET',
+            url: '/api/nodes'
+        })
+        .then( (response) => {
+            this._nodes = new Map();
+            for (let m in response.data) {
+                this._nodes.set(response.data[m].Id, response.data[m]);
             }
-
-        ];
-
-        for (let m in mock) {
-            this._nodes.set(mock[m].Id, mock[m]);
-        }
+            this.toastService.info('Loaded nodes');
+        })
+        .catch( (error) => {
+            this.toastService.error(error.data);
+        });
     }
 }
 

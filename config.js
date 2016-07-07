@@ -8,10 +8,10 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.7",
-    "angular-animate": "github:angular/bower-angular-animate@1.5.7",
     "angular-aria": "github:angular/bower-angular-aria@1.5.7",
     "angular-material": "github:angular/bower-material@master",
     "angular-messages": "github:angular/bower-angular-messages@1.5.7",
+    "angular-mocks": "github:angular/bower-angular-mocks@1.5.7",
     "angular-ui-router": "github:angular-ui/angular-ui-router-bower@0.3.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
@@ -35,6 +35,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.5.7"
     },
     "github:angular/bower-angular-messages@1.5.7": {
+      "angular": "github:angular/bower-angular@1.5.7"
+    },
+    "github:angular/bower-angular-mocks@1.5.7": {
       "angular": "github:angular/bower-angular@1.5.7"
     },
     "github:angular/bower-material@master": {
