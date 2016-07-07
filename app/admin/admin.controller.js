@@ -2,7 +2,7 @@ class adminController {
     constructor(adminService, nodesService) {
 
         this.nodes = nodesService.nodes;
-        this.banner = nodesService.getbanner();
+
         // Variables for selected categories
         this.categorySel;
         this.subCategory1Sel;
