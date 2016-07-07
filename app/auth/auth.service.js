@@ -2,7 +2,7 @@ class authService {
     constructor() {
         this._users = new Map();
         this._roles = new Map();
-        
+
         this.getUsers();
         this.getRoles();
     }
@@ -54,7 +54,7 @@ class authService {
                 Name: 'user 3'
             }
         ];
-        
+
         for (let m in mock) {
             this._users.set(mock[m].Id, mock[m]);
         }
@@ -66,25 +66,25 @@ class authService {
                 Id: '1',
                 Title: 'ΚΕΠΙΧ',
                 Description: 'bla',
-                Rights: [{ _Id: '21', Edit: true, View: false }]
+                Rights: [{ _Id: '21', Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }, { _Id: '21', Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ', Edit: false, View: true }]
             },
             {
                 Id: '2',
                 Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
                 Description: 'bla',
-                Rights: [{ _Id: '3', Edit: false, View: true }]
+                Rights: []
             },
             {
                 Id: '3',
                 Title: 'ΗΓΕΣΙΑ',
                 Description: 'bla',
-                Rights: [{ _Id: '2', Edit: true, View: false }]
+                Rights: []
             },
             {
                 Id: '4',
                 Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
                 Description: 'bla',
-                Rights: [{ _Id: '1', Edit: true, View: true }]
+                Rights: [{ _Id: '1', Title: '', Edit: true, View: true }]
             }
         ];
 
