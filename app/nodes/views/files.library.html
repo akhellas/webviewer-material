@@ -1,0 +1,22 @@
+<div layout="row">
+
+    <div flex>
+        <lf-ng-md-file-input lf-files="library.files" drag></lf-ng-md-file-input>
+    </div>
+
+    <div flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>Files</span>
+            </div>
+        </md-toolbar>
+
+        <md-content>
+            <md-list>
+                <md-list-item ng-repeat="file in library.files">
+                    <div class="md-list-item-text">{{file.lfDataUrl}}</div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</div>

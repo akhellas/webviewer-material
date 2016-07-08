@@ -30,7 +30,19 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('admin.users', {
       url: "/users",
       templateUrl: "app/admin/views/admin.users.html"
-    });
+    })
+
+    .state('nodes', {
+      abstract: true,
+      url: '/nodes',
+      template: '<ui-view/>'
+    })
+    .state('nodes.library', {
+      url: "/nodes/library",
+      templateUrl: "app/nodes/views/file.library.html",
+      controller: "libraryController",
+      controllerAs: "library"
+    })
 }
 
 export default stateConfig;

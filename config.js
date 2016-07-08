@@ -20,6 +20,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.21",
     "font-awesome": "npm:font-awesome@4.6.3",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "shuyu/angular-material-fileinput": "github:shuyu/angular-material-fileinput@1.4.8",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.6.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
