@@ -38,8 +38,8 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       template: '<ui-view/>'
     })
     .state('nodes.library', {
-      url: "/nodes/library",
-      templateUrl: "app/nodes/views/file.library.html",
+      url: "/library",
+      templateUrl: "app/nodes/views/files.library.html",
       controller: "libraryController",
       controllerAs: "library"
     })

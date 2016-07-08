@@ -8,6 +8,7 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.7",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.7",
     "angular-aria": "github:angular/bower-angular-aria@1.5.7",
     "angular-material": "github:angular/bower-material@master",
     "angular-messages": "github:angular/bower-angular-messages@1.5.7",
@@ -20,7 +21,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.21",
     "font-awesome": "npm:font-awesome@4.6.3",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "shuyu/angular-material-fileinput": "github:shuyu/angular-material-fileinput@1.4.8",
+    "ng-file-upload": "npm:ng-file-upload@12.0.4",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.6.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -163,6 +164,9 @@ System.config({
     },
     "npm:isarray@1.0.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:ng-file-upload@12.0.4": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"

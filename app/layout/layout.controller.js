@@ -10,6 +10,16 @@ class layoutController {
         this.isLeftOpen = true;
         this.isRightOpen = false;
 
+        this.theme = {
+            buttons: {
+                add: '',
+                edit: '',
+                delete: '',
+                save: '',
+                default: ''
+            }
+        };
+
         this.nodes = [];
         
         this.$scope.$watch('layout.nodesService.nodes', (x) => this.nodesChanged(x), true);

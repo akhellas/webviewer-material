@@ -4,7 +4,8 @@ import 'assets/app.css!'
 
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
-import material from 'angular-material'
+import ngMaterial from 'angular-material'
+import ngFileUpload from 'ng-file-upload'
 
 import appModule from './app'
 
@@ -15,7 +16,7 @@ angular
         let appName = 'webViewer';
 
         let body = document.getElementsByTagName("body")[0];
-        let app  = angular.module( appName, [ uiRouter, material, appModule ] );
+        let app  = angular.module( appName, [ uiRouter, ngMaterial, ngFileUpload, appModule ] );
 
         angular.bootstrap( body, [ app.name ], { strictDi: false });
     });
