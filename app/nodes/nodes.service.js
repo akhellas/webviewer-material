@@ -43,7 +43,6 @@ class nodesService {
             for (let m in response.data) {
                 this._nodes.set(response.data[m].Id, response.data[m]);
             }
-            this.toastService.info('Loaded nodes');
         })
         .catch( (error) => {
             this.toastService.error(error.data);
