@@ -3,33 +3,11 @@ class adminController {
 
         this.nodes = nodesService.nodes;
 
-        // Variables for selected categories
-        this.categorySel;
-        this.subCategory1Sel;
-        this.subCategory2Sel;
-        //
-
         // Variables to open edit for each category
         this.editCategory = true;
         this.editSubCategory1 = true;
         this.editSubCategory2 = true;
         //
-
-        // this.activeBanner = function (id) {
-        //     for (var item in this.banner) {
-        //         if (item.Id == id)
-        //             item.visible = !(item.visible);
-        //         else
-        //             item.visible = false;
-        //     }
-
-        // }
-        this.openSubCategory = function (index) {
-            this.subCategory1Sel = null;
-            this.subCategory2Sel = null;
-            this.categorySel = index;
-
-        };
 
         this.addCategory = function (category) {
             switch (category) {
@@ -90,7 +68,6 @@ class adminController {
             }
 
         }
-
         this.removeCategory = function (category) {
             switch (category) {
                 case 0:
@@ -114,14 +91,18 @@ class adminController {
             }
         }
 
-        this.swap = function (nodes, index1, index2) {
-
-            var tmp = nodes[index1];
-            nodes[index1] = nodes[index2];
-            nodes[index2] = tmp;
-        }
-
     }
+    swap(nodes, index1, index2) {
+
+        var tmp = nodes[index1];
+        nodes[index1] = nodes[index2];
+        nodes[index2] = tmp;
+    }
+    openSubCategory(index) {
+        this.subCategory1Sel = null;
+        this.subCategory2Sel = null;
+        this.categorySel = index;
+    };
 
 }
 

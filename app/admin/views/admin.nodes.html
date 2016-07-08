@@ -75,23 +75,19 @@
                     </md-card-title>
             </div>
             <md-list class="md-dense">
-                <md-list-item ng-repeat="node in admin.nodes">
-                    <div layout="row" flex ng-style="{'background-color':admin.categorySel==$index ? 'rgb(140,158,255)':null}">
+                <md-list-item ng-repeat="node in admin.nodes" ng-click="admin.openSubCategory($index)" ng-style="{'background-color':admin.categorySel==$index ? 'rgb(140,158,255)':null}">
+                    <div flex layout="row" layout-align="space-between center">
                         <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes,$index,$index-1)" ng-disabled="$first">
                             <i class="fa fa-chevron-up" aria-hidden=""></i>
                         </md-button>
-                        <div layout="column" flex>
-                            <md-button ng-click="admin.openSubCategory($index)">
-                                {{ node.Title }}
-                            </md-button>
+                        <div layout="row" layout-align="center none" flex>
+                            {{ node.Title }}
                         </div>
                         <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes,$index,$index+1)" ng-disabled="$last">
                             <i class="fa fa-chevron-down" aria-hidden=""></i>
                         </md-button>
                     </div>
                 </md-list-item>
-            </md-list>
-            <md-divider></md-divider>
         </div>
         <div flex>
             <md-toolbar class="md-hue-2">
@@ -138,16 +134,14 @@
                     </md-card-title>
             </div>
             <md-list class="md-dense">
-                <md-list-item ng-repeat="node in admin.nodes[admin.categorySel].Children">
-                    <div layout="row" flex ng-style="{'background-color':admin.subCategory1Sel==$index ? 'rgb(140,158,255)':null}">
+                <md-list-item ng-repeat="node in admin.nodes[admin.categorySel].Children" ng-click="admin.subCategory1Sel=$index" ng-style="{'background-color':admin.subCategory1Sel==$index ? 'rgb(140,158,255)':null}">
+                    <div flex layout="row" layout-align="space-between center">
                         <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.categorySel].Children,$index,$index-1)"
                             ng-disabled="$first">
                             <i class="fa fa-chevron-up" aria-hidden=""></i>
                         </md-button>
-                        <div layout="column" flex>
-                            <md-button ng-click="admin.subCategory1Sel=$index">
-                                {{ node.Title }}
-                            </md-button>
+                        <div layout="row" layout-align="center none" flex>
+                            {{ node.Title }}
                         </div>
                         <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.categorySel].Children,$index,$index+1)"
                             ng-disabled="$last">
@@ -156,7 +150,6 @@
                     </div>
                 </md-list-item>
             </md-list>
-            <md-divider></md-divider>
         </div>
         <div flex>
             <md-toolbar class="md-hue-2">
@@ -205,16 +198,15 @@
                     </md-card-title>
             </div>
             <md-list class="md-dense">
-                <md-list-item ng-repeat="node in admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children">
-                    <div layout="row" flex ng-style="{'background-color':admin.subCategory2Sel==$index ? 'rgb(140,158,255)':null}">
+                <md-list-item ng-repeat="node in admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children" 
+                ng-click="admin.subCategory2Sel=$index" ng-style="{'background-color':admin.subCategory2Sel==$index ? 'rgb(140,158,255)':null}">
+                    <div flex layout="row" layout-align="space-between center">
                         <md-button class="md-icon-button" aria-label="Move Up" ng-click="admin.swap(admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children,$index,$index-1)"
                             ng-disabled="$first">
                             <i class="fa fa-chevron-up" aria-hidden=""></i>
                         </md-button>
-                        <div layout="column" flex>
-                            <md-button ng-click="admin.subCategory2Sel=$index">
-                                {{ node.Title }}
-                            </md-button>
+                        <div layout="row" layout-align="center none" flex>
+                            {{ node.Title }}
                         </div>
                         <md-button class="md-icon-button" aria-label="Move Down" ng-click="admin.swap(admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children,$index,$index+1)"
                             ng-disabled="$last">
@@ -223,9 +215,6 @@
                     </div>
                 </md-list-item>
             </md-list>
-            <md-divider></md-divider>
-         
         </div>
-
         </md-card>
 </div>
