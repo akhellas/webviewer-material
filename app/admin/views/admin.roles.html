@@ -1,60 +1,67 @@
-<div>
-    <div layout="row">
-        <md-card flex="20" style="margin:0px!important">
-            <md-toolbar layout="row" layout-align="space-between center" style="padding-left:10px">
-                <label>Ρόλοι</label>
+<div layout="row">
+    <md-card flex="20" style="margin:0px!important">
+        <md-toolbar layout="row" layout-align="space-between center" style="padding-left:10px">
+            <label>Ρόλοι</label>
+            <div>
                 <md-button class="md-fab md-mini md-primary md-hue-3" ng-click="roles.addGroup();roles.editOn=!roles.editOn" ng-disabled="roles.editOn || roles.addright"
                     title="Προσθήκη Νέας Κατηγορίας" aria-label="addcategory"><i class="fa fa-plus " aria-hidden="true"></i>
                 </md-button>
-            </md-toolbar>
-            <md-divider></md-divider>
-            <md-list class="md-dense" ng-style="{ 'background-color': roles.editOn || roles.addright? 'lightgray':null}" flex>
-                <md-list-item class="md-2-line" ng-repeat="node in roles.nodeRights" ng-click="roles.nodeSelected=$index" ng-disabled="roles.editOn || roles.addright"
-                    ng-style="{ 'background-color':roles.nodeSelected==$index ? 'rgb(140,158,255)':null}">
-                    <i class="fa fa-users fa-2x md-avatar " aria-hidden="true "></i>
-                    <div class="md-list-item-text " layout="column ">
-                        <h3>{{ node.Title }}</h3>
-                        <h4>{{ node.Description }}</h4>
-                    </div>
-                </md-list-item>
-            </md-list>
-        </md-card>
-        <md-card flex="30" style="margin:0px!important;padding:0px 5px 0px 5px;" ng-hide="roles.nodeSelected==null" layout="column">
-            <md-toolbar layout="row" layout-align="space-between center" style="padding-left:10px">
-                <label> Διαχείριση Ρόλων : {{roles.nodeRights[roles.nodeSelected].Title}}</label>
-            </md-toolbar>
-            <md-divider></md-divider>
-            <md-input-container>
-                <label>Όνομα Ρόλου</label>
-                <input ng-model="roles.nodeRights[roles.nodeSelected].Title">
-            </md-input-container>
-            <md-input-container>
-                <label>Περιγραφή</label>
-                <input ng-model="roles.nodeRights[roles.nodeSelected].Description">
-            </md-input-container>
-            <md-button class=" md-raised md-primary" ng-disabled="roles.addright" ng-click="roles.save()" aria-label="addcategory" title="Προσθήκη Νέας Κατηγορίας">Αποθήκευση
-            </md-button>
-        </md-card>
-        <md-card flex style="margin:0px!important" ng-hide="roles.nodeSelected==null">
-            <md-toolbar layout="row" layout-align="space-between center" style="padding-left:10px">
-                <label>Διαχείριση Δικαιωμάτων</label>
+                <md-button class="md-fab md-mini md-warn" ng-click="roles.removeCategory()" ng-disabled="roles.nodeSelected==null"
+                    title="Διαγραφή Κατηγορίας" aria-label="removecategory"><B>x</B></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-divider></md-divider>
+        <md-list class="md-dense" ng-style="{ 'background-color': roles.editOn || roles.addright? 'lightgray':null}" flex>
+            <md-list-item class="md-2-line" ng-repeat="node in roles.nodeRights" ng-click="roles.nodeSelected=$index" ng-disabled="roles.editOn || roles.addright"
+                ng-style="{ 'background-color':roles.nodeSelected==$index ? 'rgb(140,158,255)':null}">
+                <i class="fa fa-users fa-2x md-avatar " aria-hidden="true "></i>
+                <div class="md-list-item-text " layout="column ">
+                    <h3>{{ node.Title }}</h3>
+                    <h4>{{ node.Description }}</h4>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card>
+    <div style="padding-left:10px"></div>
+    <md-card flex style="margin:0px!important;" ng-if="roles.nodeSelected!=null" layout="column">
+        <md-toolbar layout="row" layout-align="space-between center" style="padding-left:10px">
+            <label>Διαχείριση Δικαιωμάτων</label>
+            <div>
                 <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="roles.addright=!roles.addright" ng-hide="roles.addright"
                     title="Προσθήκη Νέας Κατηγορίας" aria-label="addcategory">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </md-button>
-                <div ng-show="roles.addright">
-                    <md-button class="md-fab md-mini md-warn md-hue-3" ng-click="roles.pushRight()" title="Αποθήκευση" aria-label="save">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </md-button>
-                    <md-button class=" md-fab md-mini md-primary md-hue-3" ng-click="roles.cancelAddCategory()" title="Άκυρο" aria-label="addright">
-                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-                    </md-button>
-                </div>
-            </md-toolbar>
-            <div layout="row" layout-align="space-between center" ng-show="roles.addright" layout-padding>
-                <md-input-container flex="40">
-                    <label>Κατηγορία</label>
-                    <md-select ng-model="roles.newRight.Title">
+                <md-button class="md-fab md-mini md-primary md-hue-3" ng-hide="roles.addright" ng-click="roles.save()" aria-label="addcategory"
+                    title="Αποθήκευση">
+                    <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>
+                </md-button>
+            </div>
+            <div ng-show="roles.addright">
+                <md-button class="md-fab md-mini md-primary md-hue-3" ng-click="roles.pushRight()" title="Αποθήκευση" aria-label="save">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </md-button>
+                <md-button class=" md-fab md-mini md-warn" ng-click="roles.cancelAddRight()" title="Άκυρο" aria-label="addright">
+                    <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div layout="row">
+            <div layout="column" flex="30" layout-padding>
+                <md-input-container>
+                    <label>Όνομα Ρόλου</label>
+                    <input ng-model="roles.nodeRights[roles.nodeSelected].Title">
+                </md-input-container>
+                <md-input-container>
+                    <label>Περιγραφή</label>
+                    <input ng-model="roles.nodeRights[roles.nodeSelected].Description">
+                </md-input-container>
+            </div>
+            <div layout="column" flex>
+                <div layout="row" layout-align="space-between center" ng-show="roles.addright" layout-padding>
+                    <md-input-container flex>
+                        <label>Κατηγορία</label>
+                        <!--<md-select ng-model="roles.newRight.Title">
                         <div>
                             <div>
                                 <div>
@@ -63,32 +70,34 @@
                             </div>
                         </div>
                         
-                    </md-select>
-                    <!--<md-select ng-model="roles.newRight.Title">
-                        <md-option ng-repeat-start="node in roles.nodes " value="{{node.Title}} ">{{node.Title}}</md-option>
-                        <md-option ng-repeat-end ng-repeat="item in node.Children " value="{{item.Title}} ">{{item.Title}}</md-option>
                     </md-select>-->
-                </md-input-container>
-                <md-input-container>
-                    <md-checkbox class="md-primary " ng-model="roles.newRight.Edit " title="Επεξεργασία ">Επεξεργασία</md-checkbox>
-                    <md-checkbox class="md-primary " ng-model="roles.newRight.View " title="Προβολή ">Προβολή</md-checkbox>
-                </md-input-container>
+                        <md-select ng-model="roles.newRight.Title">
+                            <md-option ng-repeat-start="node in roles.nodes " value="{{node.Title}} ">{{node.Title}}</md-option>
+                            <md-option ng-repeat-end ng-repeat="item in node.Children " value="{{item.Title}} ">{{item.Title}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <md-checkbox class="md-primary " ng-model="roles.newRight.Edit " title="Επεξεργασία ">Επεξεργασία</md-checkbox>
+                        <md-checkbox class="md-primary " ng-model="roles.newRight.View " title="Προβολή ">Προβολή</md-checkbox>
+                    </md-input-container>
+                </div>
+                <md-list class="md-dense">
+                    <md-subheader class="md-no-sticky" layout-padding>Δικαιώματα</md-subheader>
+                    <md-list-item ng-repeat="item in roles.nodeRights[roles.nodeSelected].Rights ">
+                        <p>{{ item.Title }}</p>
+                        <div>
+                            <md-checkbox class="md-primary" ng-model="item.Edit" title="Επεξεργασία">Επεξεργασία</md-checkbox>
+                            <md-checkbox class="md-primary" ng-model="item.View" title="Προβολή">Προβολή</md-checkbox>
+                            <md-button class="md-raised md-warn" ng-click="roles.removeRight($index);" style="min-width:30px!important;"><b>x</b></md-button>
+                        </div>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
             </div>
-            <md-list layout-padding>
-                <md-subheader class="md-no-sticky">Δικαιώματα</md-subheader>
-                <md-list-item ng-repeat="item in roles.nodeRights[roles.nodeSelected].Rights " ng-show="roles.nodeRights[roles.nodeSelected].Rights.length>0">
-                    <p>{{ item.Title }}</p>
-                    <div>
-                        <md-checkbox class="md-primary" ng-model="item.Edit" title="Επεξεργασία">Επεξεργασία</md-checkbox>
-                        <md-checkbox class="md-primary" ng-model="item.View" title="Προβολή">Προβολή</md-checkbox>
-                        <md-button class="md-raised md-warn" ng-click="roles.removeRight($index);" style="min-width:30px!important;"><b>x</b></md-button>
-                    </div>
-                    <md-divider></md-divider>
-                </md-list-item>
-            </md-list>
-        </md-card>
-    </div>
-    <!--<script type="text/ng-template" id="nodes_renderer.html">
+        </div>
+    </md-card>
+</div>
+<!--<script type="text/ng-template" id="nodes_renderer.html">
   <div ui-tree-handle class="tree-node tree-node-content">
     {{node.Τitle}}
   </div>

@@ -40,7 +40,7 @@ class rolesController {
         this.editOn = false;
     }
 
-    cancelAddCategory() {
+    cancelAddRight() {
         this.addright = !this.addright;
         this.newRight = {
             Edit: false,
@@ -63,6 +63,10 @@ class rolesController {
         this.newRight = {
             Edit: false, View: false
         };
+    }
+    removeCategory() {
+        this.nodeRights.splice(this.nodeSelected, 1);
+        this.nodeSelected = null;
     }
 
 

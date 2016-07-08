@@ -36,25 +36,25 @@ angular
                 Id: '1',
                 Title: 'ΚΕΠΙΧ',
                 Description: 'bla',
-                Rights: [{ _Id: '21',Title:'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }]
+                Rights: [{ _Id: '21',Title:'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false },{ _Id: '41',Title:'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }]
             },
             {
                 Id: '2',
                 Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
                 Description: 'bla',
-                Rights: [{}]
+                Rights: []
             },
             {
                 Id: '3',
                 Title: 'ΗΓΕΣΙΑ',
                 Description: 'bla',
-                Rights: [{}]
+                Rights: []
             },
             {
                 Id: '4',
                 Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
                 Description: 'bla',
-                Rights: [{}]
+                Rights: []
             }
         ];
         
