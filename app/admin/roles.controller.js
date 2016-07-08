@@ -10,20 +10,6 @@ class rolesController {
 
         this.editOn = false;
         
-        this.$scope.$watch('roles.authService.roles', x => this.rolesChanged(x));
-        this.$scope.$watch('roles.nodesService.nodes', x => this.nodesChanged(x), true);
-    }
-
-    nodesChanged(newValue, oldValue) {
-        if (newValue != undefined && newValue != oldValue) {
-            this.nodes = newValue;
-        }
-    }
-
-    rolesChanged(newValue, oldValue) {
-        if (newValue != undefined && newValue != oldValue) {
-            this.nodeRights = newValue;
-        }
     }
 
     addGroup() {

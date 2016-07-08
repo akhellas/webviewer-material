@@ -162,9 +162,7 @@ angular
         $httpBackend.whenGET('/api/nodes')
                     .respond(nodes);
 
-
         $httpBackend.whenGET(/.*/).passThrough();
     });
-//.run('authMock', authMock);
 
 export default mocks;

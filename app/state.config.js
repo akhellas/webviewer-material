@@ -23,7 +23,9 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     })
     .state('admin.roles', {
       url: "/roles",
-      templateUrl: "app/admin/views/admin.roles.html"
+      templateUrl: "app/admin/views/admin.roles.html",
+      controller: "rolesController",
+      controllerAs: "roles"
     })
     .state('admin.users', {
       url: "/users",
