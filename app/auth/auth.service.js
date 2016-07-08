@@ -25,7 +25,6 @@ class authService {
             for (let m in response.data) {
                 this._roles.set(response.data[m].Id, response.data[m]);
             }
-            this.toastService.info('Loaded users');
         })
         .catch( (error) => {
             this.toastService.error(error.data);
@@ -66,7 +65,6 @@ class authService {
             for (let m in response.data) {
                 this._users.set(response.data[m].Id, response.data[m]);
             }
-            this.toastService.info('Loaded users');
         })
         .catch( (error) => {
             this.toastService.error(error.data);

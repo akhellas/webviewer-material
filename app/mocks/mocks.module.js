@@ -71,18 +71,21 @@ angular
                     blue: 255
                 },
                 InOverview: false,
+                Type: 0,
                 Children: [
                     {
                         Id: '11',
                         Title: 'ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
                         Color: '',
                         InOverview: false,
+                        Type: 0,
                         Children: [
                             {
                                 Id: '111',
                                 Title: 'ΑΤΑ',
                                 Color: '',
                                 InOverview: false,
+                                Type: 0,
                                 Children: []
                             },
                             {
@@ -90,6 +93,7 @@ angular
                                 Title: 'ΔΑΥ',
                                 Color: '',
                                 InOverview: false,
+                                Type: 0,
                                 Children: []
                             },
                             {
@@ -97,6 +101,7 @@ angular
                                 Title: 'ΔΑΕ',
                                 Color: '',
                                 InOverview: false,
+                                Type: 0,
                                 Children: []
                             }
                         ]
@@ -106,6 +111,7 @@ angular
                         Title: 'ΠΤΗΣΕΙΣ ΝΑΤΟΙΚΩΝ ΧΩΡΩΝ',
                         Color: '',
                         InOverview: false,
+                        Type: 0,
                         Children: []
                     }
                 ]
@@ -120,12 +126,22 @@ angular
                 }
                 ,
                 InOverview: true,
+                Type: 0,
                 Children: [
                     {
                         Id: '21',
                         Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ',
                         Color: '',
                         InOverview: false,
+                        Type: 0,
+                        Children: []
+                    },
+                    {
+                        Id: '22',
+                        Title: 'ΒΙΒΛΙΟΘΗΚΗ ΕΠΙΧΕΙΡΗΣΕΩΝ',
+                        Color: '',
+                        InOverview: false,
+                        Type: 1,
                         Children: []
                     }
                 ]
@@ -140,17 +156,19 @@ angular
 
                 },
                 InOverview: true,
+                Type: 0,
                 Children: [
                     {
-                        Id: '21',
+                        Id: '31',
                         Title: '2ΚΕΠ',
                         Color: '',
                         InOverview: false,
                         Children: [{
-                            Id: '21',
+                            Id: '311',
                             Title: '3ο ΣΑ ',
                             Color: '',
                             InOverview: false,
+                            Type: 0,
                             Children: []
                         }]
                     }
