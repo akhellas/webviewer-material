@@ -6,7 +6,7 @@
                 <md-button class="md-fab md-mini md-primary md-hue-3" ng-click="roles.addGroup();roles.editOn=!roles.editOn" ng-disabled="roles.editOn || roles.addright"
                     title="Προσθήκη Νέας Κατηγορίας" aria-label="addcategory"><i class="fa fa-plus " aria-hidden="true"></i>
                 </md-button>
-                <md-button class="md-fab md-mini md-warn" ng-click="roles.removeCategory()" ng-disabled="roles.nodeSelected==null"
+                <md-button class="md-fab md-mini md-warn" ng-click="roles.removeCategory()" ng-disabled="roles.nodeSelected==null|| roles.addright"
                     title="Διαγραφή Κατηγορίας" aria-label="removecategory"><B>x</B></i>
                 </md-button>
             </div>
