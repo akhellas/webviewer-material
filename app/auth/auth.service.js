@@ -1,4 +1,5 @@
 class authService {
+    
     constructor($http, toastService) {
         this.$http = $http;
         this.toastService = toastService;
@@ -6,33 +7,29 @@ class authService {
         this._users = new Map();
         this._roles = new Map();
 
-        this.getUsers();
         this.getRoles();
+        this.getUsers();
     }
 
-    get users() {
-        return Array.from(this._users.values());
+    get roles() {
+        return Array.from(this._roles.values());
     }
 
-    getUsers() {
+    getRoles() {
         this.$http({
             method: 'GET',
-            url: '/api/users'
+            url: '/api/roles'
         })
         .then( (response) => {
-            this._users = new Map();
+            this._roles = new Map();
             for (let m in response.data) {
-                this._users.set(response.data[m].Id, response.data[m]);
+                this._roles.set(response.data[m].Id, response.data[m]);
             }
             this.toastService.info('Loaded users');
         })
         .catch( (error) => {
             this.toastService.error(error.data);
         });
-    }
-
-    get roles() {
-        return Array.from(this._roles.values());
     }
 
     insertRole(role) {
@@ -53,15 +50,21 @@ class authService {
         }
     }
 
-    getRoles() {
+
+
+    get users() {
+        return Array.from(this._users.values());
+    }
+
+    getUsers() {
         this.$http({
             method: 'GET',
-            url: '/api/roles'
+            url: '/api/users'
         })
         .then( (response) => {
-            this._roles = new Map();
+            this._users = new Map();
             for (let m in response.data) {
-                this._roles.set(response.data[m].Id, response.data[m]);
+                this._users.set(response.data[m].Id, response.data[m]);
             }
             this.toastService.info('Loaded users');
         })
