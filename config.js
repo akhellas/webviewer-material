@@ -20,7 +20,6 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.21",
     "font-awesome": "npm:font-awesome@4.6.3",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "restangular": "github:mgonto/restangular@1.5.2",
     "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.6.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -93,10 +92,6 @@ System.config({
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
-    "github:mgonto/restangular@1.5.2": {
-      "angular": "github:angular/bower-angular@1.5.7",
-      "lodash": "npm:lodash@3.10.1"
-    },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
@@ -167,9 +162,6 @@ System.config({
     },
     "npm:isarray@1.0.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
-    },
-    "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
