@@ -141,7 +141,7 @@ angular
                         Title: 'ΒΙΒΛΙΟΘΗΚΗ ΕΠΙΧΕΙΡΗΣΕΩΝ',
                         Color: '',
                         InOverview: false,
-                        Type: 0,
+                        Type: 1,
                         Children: []
                     }
                 ]
