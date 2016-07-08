@@ -1,5 +1,5 @@
 class rolesController {
-    
+
     constructor($scope, authService, nodesService) {
         this.$scope = $scope;
         this.authService = authService;
@@ -9,7 +9,10 @@ class rolesController {
         this.nodeRights = [];
 
         this.editOn = false;
-        
+        this.newRight = {
+            Edit: false, View: false
+        };
+
         this.$scope.$watch('roles.authService.roles', (x) => this.rolesChanged(x), true);
         this.$scope.$watch('roles.nodesService.nodes', (x) => this.nodesChanged(x), true);
     }
@@ -45,15 +48,11 @@ class rolesController {
         };
     }
 
-    removeRight() {
-        this.nodeRights[this.nodeSelected].Rights
+    removeRight(index) {
+        this.nodeRights[this.nodeSelected].Rights.splice(index, 1)
     }
 
     pushRight() {
-        this.newRight = {
-            Edit: false, View: false
-        };
-
         this.nodeRights[this.nodeSelected].Rights.push({
             _Id: '',
             Title: this.newRight.Title,
@@ -61,7 +60,6 @@ class rolesController {
             View: this.newRight.View
         });
         this.addright = !this.addright;
-        
         this.newRight = {
             Edit: false, View: false
         };
