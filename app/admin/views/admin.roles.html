@@ -14,7 +14,7 @@
             <md-divider></md-divider>
             <md-list class="md-dense " flex>
                 <md-list-item class="md-2-line " ng-repeat="node in admin.nodeRights " ng-click="admin.nodeSelected=$index
-                " ng-disabled="admin.editOn" ng-style="{ 'background-color':admin.nodeSelected==$index ? 'rgb(140,158,255)':null} ">
+                " ng-disabled="admin.editOn || admin.addright" ng-style="{ 'background-color':admin.nodeSelected==$index ? 'rgb(140,158,255)':null} ">
                     <i class="fa fa-users fa-2x md-avatar " aria-hidden="true "></i>
                     <div class="md-list-item-text " layout="column ">
                         <h3>{{ node.Title }}</h3>
@@ -55,20 +55,24 @@
                 <div layout="row" layout-align="space-between center" ng-show="admin.addright">
                     <md-input-container flex="40">
                         <label>Κατηγορία</label>
-                        <md-select ng-model="admin.newRight.Title">
-                            <md-option ng-repeat-start="node in admin.nodes" value="{{node.Title}}">{{node.Title}}</md-option>
-                            <md-option ng-repeat-end ng-repeat="item in node.Children" value="{{item.Title}}">{{item.Title}}</md-option>
+                        <md-select>
+                            <md-option ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html"></md-option>
                         </md-select>
+                        <!--<md-select ng-model=" admin.newRight.Title ">
+                            <md-option ng-repeat-start="node in admin.nodes " value="{{node.Title}} ">{{node.Title}}</md-option>
+                            <md-option ng-repeat-end ng-repeat="item in node.Children " value="{{item.Title}} ">{{item.Title}}</md-option>
+                        </md-select>-->
                     </md-input-container>
                     <md-input-container>
-                        <md-checkbox class="md-primary" ng-model="admin.newRight.Edit" title="Επεξεργασία">Επεξεργασία</md-checkbox>
-                        <md-checkbox class="md-primary" ng-model="admin.newRight.View" title="Προβολή">Προβολή</md-checkbox>
+                        <md-checkbox class="md-primary " ng-model="admin.newRight.Edit " title="Επεξεργασία ">Επεξεργασία</md-checkbox>
+                        <md-checkbox class="md-primary " ng-model="admin.newRight.View " title="Προβολή ">Προβολή</md-checkbox>
                     </md-input-container>
                 </div>
                 <md-list>
                     <mid-list-item>
-                        <md-subheader class="md-no-sticky">Δικαιώματα</md-subheader>
-                        <md-list-item ng-repeat="item in admin.nodeRights[admin.nodeSelected].Rights" ng-show="admin.nodeRights[admin.nodeSelected].Rights.length> 0">
+                        <md-subheader class="md-no-sticky ">Δικαιώματα</md-subheader>
+                        <md-list-item ng-repeat="item in admin.nodeRights[admin.nodeSelected].Rights " ng-show="admin.nodeRights[admin.nodeSelected].Rights.length>
+                            0">
                             <p>{{ item.Title }}</p>
                             <div style="padding-top:20px;">
                                 <md-checkbox class="md-primary" ng-model="item.Edit" title="Επεξεργασία">Επεξεργασία</md-checkbox>
@@ -81,3 +85,12 @@
         </md-card>
         </div>
     </div>
+    <script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    {{node.Τitle}}
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
