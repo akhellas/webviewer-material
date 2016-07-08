@@ -1,38 +1,31 @@
 class rolesController {
-    constructor(authService, nodesService) {
+    
+    constructor($scope, authService, nodesService) {
+        this.$scope = $scope;
+        this.authService = authService;
+        this.nodesService = nodesService;
 
-        this.nodeRights = [
-            {
-                Id: '1',
-                Title: 'ΚΕΠΙΧ',
-                Description: 'bla',
-                Rights: [{ _Id: '21', Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }]
-            },
-            {
-                Id: '2',
-                Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
-                Description: 'bla',
-                Rights: [{}]
-            },
-            {
-                Id: '3',
-                Title: 'ΗΓΕΣΙΑ',
-                Description: 'bla',
-                Rights: [{}]
-            },
-            {
-                Id: '4',
-                Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
-                Description: 'bla',
-                Rights: [{}]
-            }
-        ];
-        this.nodes = nodesService.nodes;
+        this.nodes = [];
+        this.nodeRights = [];
 
         this.editOn = false;
-        this.nodeSelected;
-
+        
+        this.$scope.$watch('roles.authService.roles', x => this.rolesChanged(x));
+        this.$scope.$watch('roles.nodesService.nodes', x => this.nodesChanged(x), true);
     }
+
+    nodesChanged(newValue, oldValue) {
+        if (newValue != undefined && newValue != oldValue) {
+            this.nodes = newValue;
+        }
+    }
+
+    rolesChanged(newValue, oldValue) {
+        if (newValue != undefined && newValue != oldValue) {
+            this.nodeRights = newValue;
+        }
+    }
+
     addGroup() {
         this.nodeRights.push({
             Id: '', Title: 'Νέα ομάδα', Description: 'Περιγραφή', Rights: []

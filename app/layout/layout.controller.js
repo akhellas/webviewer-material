@@ -11,14 +11,13 @@ class layoutController {
 
         this.nodes = [];
 
-        this.$scope.$watch('layout.nodesService.nodes', x => this.nodesChanged(x), true);
+        this.$scope.$watch('layout.nodesService.nodes', x => this.nodesChanged(x));
     }
 
     nodesChanged(newValue, oldValue) {
         if (newValue != undefined && newValue != oldValue) {
             this.nodes = newValue;
         }
-
     }
 }
 
