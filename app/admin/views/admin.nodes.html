@@ -89,7 +89,7 @@
         </md-card>
         <!--Category List Items-->
         <md-list class="md-dense " ng-style="{ 'background-color': !admin._editCategory ? 'lightgray':null} ">
-            <md-list-item ng-repeat="node in admin.nodes " ng-click="admin.openSubCategory($index) " ng-disabled="!admin._editCategory "
+            <md-list-item ng-repeat="node in admin.nodes " ng-click="admin.openSubCategory($index) " ng-disabled="!admin._editCategory || admin.disable1 "
                 ng-style="{ 'background-color':admin.categorySel==$index ? 'rgb(140,158,255)':null} ">
                 <div flex layout="row " layout-align="space-between center ">
                     <md-button class="md-icon-button " aria-label="Move Up " ng-click="admin.swap(admin.nodes,$index,$index-1)
@@ -162,10 +162,10 @@
             </md-card-title>
         </md-card>
         <!--SubCategory List Items-->
-        <md-list class="md-dense " ng-style="{ 'background-color': !admin._editSubCategory1 ? 'lightgray':null} ">
+        <md-list class="md-dense " ng-style="{ 'background-color': !admin._editSubCategory1  ? 'lightgray':null} ">
             <md-list-item ng-repeat="node in admin.nodes[admin.categorySel].Children " ng-click="admin.subCategory1Sel=$index
                             " ng-style="{ 'background-color':admin.subCategory1Sel==$index ? 'rgb(140,158,255)':null} "
-                ng-disabled="!admin._editSubCategory1 ">
+                ng-disabled="!admin._editSubCategory1 || admin.disable2">
                 <div flex layout="row " layout-align="space-between center ">
                     <md-button class="md-icon-button " aria-label="Move Up " ng-click="admin.swap(admin.nodes[admin.categorySel].Children,$index,$index-1) "
                         ng-disabled="$first ">
@@ -239,10 +239,10 @@
             </md-card-title>
         </md-card>
         <!--Sub SubCategory List Items-->
-        <md-list class="md-dense " ng-style="{ 'background-color': !admin._editSubCategory2 ? 'lightgray':null} ">
+        <md-list class="md-dense " ng-style="{ 'background-color': !admin._editSubCategory2? 'lightgray':null} ">
             <md-list-item ng-repeat=" node in admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children
                             " ng-click="admin.subCategory2Sel=$index " ng-style="{ 'background-color':admin.subCategory2Sel==$index ?
-                            'rgb(140,158,255)':null} " ng-disabled="!admin._editSubCategory2 ">
+                            'rgb(140,158,255)':null} " ng-disabled="!admin._editSubCategory2 ||  admin.disable3">
                 <div flex layout="row " layout-align="space-between center ">
                     <md-button class="md-icon-button " aria-label="Move Up " ng-click="admin.swap(admin.nodes[admin.categorySel].Children[admin.subCategory1Sel].Children,$index,$index-1) "
                         ng-disabled="$first ">
