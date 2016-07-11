@@ -36,25 +36,30 @@ angular
                 Id: '1',
                 Title: 'ΚΕΠΙΧ',
                 Description: 'bla',
-                Rights: [{ _Id: '21', Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }, { _Id: '41', Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }]
+                Rights: [{ _Id: '21',Title:'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false },{ _Id: '41',Title:'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }],
+                Users:[{Id:'U1',Description:'Περπερίδης Νικόλαος (66040)'},{Id:'U1',Description:'Πέτρου Γεώργιος (35744)'},{Id:'U1',Description:'Πλεμμένου Χρίστινα (46321)'},{Id:'U1',Description:'Αλεξανδροπούλου Βούλα (45637)'}
+                ,{Id:'U1',Description:'Ευστρατίου Ευστράτιος (65423)'},{Id:'U1',Description:'Παρασκευής Νικόλαος (12345)'}]
             },
             {
                 Id: '2',
                 Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
                 Description: 'bla',
-                Rights: []
+                Rights: [],
+                Users:[]
             },
             {
                 Id: '3',
                 Title: 'ΗΓΕΣΙΑ',
                 Description: 'bla',
-                Rights: []
+                Rights: [],
+                Users:[]
             },
             {
                 Id: '4',
                 Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
                 Description: 'bla',
-                Rights: []
+                Rights: [],
+                Users:[]
             }
         ];
 
