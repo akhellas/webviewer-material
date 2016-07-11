@@ -126,7 +126,7 @@ angular
                 }
                 ,
                 InOverview: true,
-                Type: 0,
+                Type: 1,
                 Children: [
                     {
                         Id: '21',
