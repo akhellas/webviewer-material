@@ -78,8 +78,8 @@
                                             <div ng-repeat="subNode in node.Children ">
                                                 <md-option value="{{subNode.Title}} "> - {{subNode.Title}}</md-option>
                                                 <div ng-repeat="item in subNode.Children ">
-                                                    <md-option value="{{item.Title}}
-                        ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-circle " aria-hidden="true "> {{item.Title}}</i></md-option>
+                                                    <md-option value="{{item.Title}} "><i class="fa fa-circle
+                        " aria-hidden="true " style="padding-left:10px "></i><span style="padding-left:5px ">{{item.Title}}</span></md-option>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +112,7 @@
                 <div layout="row ">
                         <md-list flex="40 " class="md-dense ">
                             <md-list-item ng-repeat="user in roles.nodeRights[roles.nodeSelected].Users ">
-                           <i class="fa fa-user " aria-hidden="true ">  {{user.Description}}</i>
+                           <i class="fa fa-user " aria-hidden="true "></i><span style="padding-left:5px ">{{user.Description}}</span>
                             </md-list-item>
                         </md-list>
                     <div layout="column " flex>
@@ -124,17 +124,17 @@
                         </div>
                         <div>
                             <md-autocomplete flex md-input-name="autocompleteField "
-                                             md-selected-item="roles.UserDescription"
+                                             md-selected-item="roles.UserDescription "
                                              md-search-text="roles.searchText "
                                              md-items="item in roles.users|filter:roles.searchText "
-                                             md-item-text="item.Name"
+                                             md-item-text="item.Name "
                                              md-floating-label="Επιλογή Χρήστη ">
                                 <md-item-template>
                                     <span>{{item.SurName}} {{item.Name}} ({{item.AMA}})</span>
                                 </md-item-template>
                             </md-autocomplete>
-                            <div flex layout="row" layout-align="end center"> 
-                            <md-button class="md-primary md-raised" ng-click="roles.addUser()">ΕΙΣΑΓΩΓΗ</md-button>
+                            <div flex layout="row " layout-align="end center "> 
+                            <md-button class="md-primary md-raised " ng-click="roles.addUser() ">ΕΙΣΑΓΩΓΗ</md-button>
                             </div>
                         </div>
                     </div>
