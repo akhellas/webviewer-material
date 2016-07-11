@@ -1,8 +1,8 @@
 class adminController {
     constructor(adminService, nodesService) {
-
+        this.nodesService = nodesService;
         this.nodes = nodesService.nodes;
-        
+
         this.TypeEnum = [{
             Id: 0,
             Description: 'Προβολή'
