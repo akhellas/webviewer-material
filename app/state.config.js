@@ -1,3 +1,5 @@
+import nodesService from './nodes/nodes.service'
+
 function stateConfig($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");
@@ -37,12 +39,18 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       url: '/nodes',
       template: '<ui-view/>'
     })
-    .state('nodes.library', {
-      url: "/library",
-      templateUrl: "app/nodes/views/files.library.html",
-      controller: "libraryController",
-      controllerAs: "library"
-    })
+    .state('nodes.detail', {
+      url: "/:id",
+      templateUrl: "app/nodes/views/node.base.html",
+      controller: "nodeController",
+      controllerAs: "details",
+      resolve: {
+        node: function ($stateParams, nodesService) {
+          return nodesService.getNode($stateParams.id)
+                             .then((response) => { return response; });
+        }
+      }
+    });
 }
 
 export default stateConfig;

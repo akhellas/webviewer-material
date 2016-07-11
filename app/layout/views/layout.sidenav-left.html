@@ -2,7 +2,7 @@
     <md-toolbar class="md-hue-2"
                 style="min-height: 50px !important; height: 50px !important; background-color: rgb({{node.Color.red}},{{node.Color.green}},{{node.Color.blue}}) ">
         <div class="md-toolbar-tools">
-            <md-button aria-label="{{node.Title}}">
+            <md-button aria-label="{{node.Title}}" ng-click="layout.$state.go('nodes.detail', { id: node.Id })">
                 <span><strong>{{node.Title}}</strong></span>
             </md-button>
             <span flex></span>
@@ -13,7 +13,7 @@
     </md-toolbar>
     <md-content ng-show="!toggle[$index]">
         <md-subheader ng-repeat-start="child in node.Children">
-            <md-button class="md-warn" aria-label="{{child.Title}}">
+            <md-button class="md-warn" aria-label="{{child.Title}}" ng-click="layout.$state.go('nodes.detail', { id: child.Id })">
                 <span><strong>{{child.Title}}</strong></span>
             </md-button>
             <span flex></span>
@@ -23,7 +23,7 @@
         </md-subheader>
         <md-list ng-show="!toggleC[$index]">
             <md-list-item ng-repeat="grandChild in child.Children">
-                <md-button aria-label="">
+                <md-button aria-label="" ng-click="layout.$state.go('nodes.detail', { id: grandChild.Id })">
                     <span>{{grandChild.Title}}</span>
                 </md-button>
             </md-list-item>

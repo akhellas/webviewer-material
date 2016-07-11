@@ -15,6 +15,19 @@ class nodesService {
         return Array.from(this._nodes.values());
     }
 
+    getNode(id) {
+        return this.$http({
+            method: 'GET',
+            url: '/api/nodes/' + id
+        })
+        .then( (response) => {
+            return response.data;
+        })
+        .catch( (error) => {
+            this.toastService.error(error.data);
+        });
+    }
+
     insertNode(node) {
         if (!this._nodes.has(node.Id)) {
             this._nodes.set(node.Id, node);
