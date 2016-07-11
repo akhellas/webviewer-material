@@ -6,7 +6,7 @@ angular
     .module('app.mocks')
     .run(function ($httpBackend) {
         'ngInject'
-        
+
         let users = [
             {
                 Id: '1',
@@ -36,7 +36,7 @@ angular
                 Id: '1',
                 Title: 'ΚΕΠΙΧ',
                 Description: 'bla',
-                Rights: [{ _Id: '21',Title:'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false },{ _Id: '41',Title:'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }]
+                Rights: [{ _Id: '21', Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }, { _Id: '41', Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }]
             },
             {
                 Id: '2',
@@ -57,7 +57,7 @@ angular
                 Rights: []
             }
         ];
-        
+
         $httpBackend.whenGET('/api/roles')
                     .respond(roles);
 
@@ -177,8 +177,34 @@ angular
 
         ];
 
+
+
         $httpBackend.whenGET('/api/nodes')
                     .respond(nodes);
+
+        let views = [
+            {
+                Id: '112',
+                Html: '<h1>IT WORKS ! (its alive?)</h1>'
+            }
+        ];
+
+        $httpBackend.whenRoute('GET', '/api/nodes/:id')
+                    .respond(function (method, url, data, headers, params) {
+                        return [200, views.find(x => x.Id == params.id)];
+                    });
+
+        // function searchTree(tree, id) {
+        //     for (let i in tree) {
+        //         let node = tree[i];
+        //         console.log(node);
+        //         if (node.Id == id) {
+        //             return node;
+        //         }
+        //         return searchTree(node.Children, id);
+        //     }
+        //     return null;
+        // }
 
         $httpBackend.whenGET(/.*/).passThrough();
     });
