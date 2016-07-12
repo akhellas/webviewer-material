@@ -4,9 +4,9 @@ let mocks = angular.module('app.mocks', ['app', 'ngMockE2E']).name;
 
 angular
     .module('app.mocks')
-    .run(function ($httpBackend) {
+    .run(function ($httpBackend, $filter) {
         'ngInject'
-
+        
         let users = [
             {
                 Id: '1',
@@ -27,9 +27,6 @@ angular
                 Name: 'user 3'
             }
         ];
-
-        $httpBackend.whenGET('/api/users')
-                    .respond(users);
 
         let roles = [
             {
@@ -63,140 +60,110 @@ angular
             }
         ];
 
-        $httpBackend.whenGET('/api/roles')
-                    .respond(roles);
-
         let nodes = [
             {
                 Id: '1',
+                Parent: null, 
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-                },
-                InOverview: false,
+                Color: { Red: 80, Green: 140, Blue: 255 },
+                Index: 0,
                 Type: 0,
-                Children: [
-                    {
-                        Id: '11',
-                        Title: 'ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
-                        Color: '',
-                        InOverview: false,
-                        Type: 0,
-                        Children: [
-                            {
-                                Id: '111',
-                                Title: 'ΑΤΑ',
-                                Color: '',
-                                InOverview: false,
-                                Type: 0,
-                                Children: []
-                            },
-                            {
-                                Id: '112',
-                                Title: 'ΔΑΥ',
-                                Color: '',
-                                InOverview: false,
-                                Type: 0,
-                                Children: []
-                            },
-                            {
-                                Id: '113',
-                                Title: 'ΔΑΕ',
-                                Color: '',
-                                InOverview: false,
-                                Type: 0,
-                                Children: []
-                            }
-                        ]
-                    },
-                    {
-                        Id: '12',
-                        Title: 'ΠΤΗΣΕΙΣ ΝΑΤΟΙΚΩΝ ΧΩΡΩΝ',
-                        Color: '',
-                        InOverview: false,
-                        Type: 0,
-                        Children: []
-                    }
-                ]
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
+            },
+            {
+                Id: '11',
+                Parent: '1',
+                Title: 'ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
+                Color: null,
+                Index: 0,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
+            },
+            {
+                Id: '111',
+                Parent: '11',
+                Title: 'ΑΤΑ',
+                Color: null,
+                Index: 0,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
+            },
+            {
+                Id: '112',
+                Parent: '11',
+                Title: 'ΔΑΥ',
+                Color: null,
+                Index: 1,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: '<span>IT WORKS ! (its alive?)</span>'
+            },
+            {
+                Id: '113',
+                Parent: '11',
+                Title: 'ΔΑΕ',
+                Color: null,
+                Index: 2,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
             },
             {
                 Id: '2',
+                Parent: null,
                 Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-                }
-                ,
-                InOverview: true,
-                Type: 1,
-                Children: [
-                    {
-                        Id: '21',
-                        Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ',
-                        Color: '',
-                        InOverview: false,
-                        Type: 0,
-                        Children: []
-                    },
-                    {
-                        Id: '22',
-                        Title: 'ΒΙΒΛΙΟΘΗΚΗ ΕΠΙΧΕΙΡΗΣΕΩΝ',
-                        Color: '',
-                        InOverview: false,
-                        Type: 1,
-                        Children: []
-                    }
-                ]
+                Color: { Red: 80, Green: 140, Blue: 255 },
+                Index: 1,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
             },
             {
-                Id: '3',
-                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
-                Color: {
-                    red: 80,
-                    green: 140,
-                    blue: 255
-
-                },
-                InOverview: true,
+                Id: '21',
+                Parent: '2',
+                Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ',
+                Color: { Red: 80, Green: 140, Blue: 255 },
+                Index: 0,
                 Type: 0,
-                Children: [
-                    {
-                        Id: '31',
-                        Title: '2ΚΕΠ',
-                        Color: '',
-                        InOverview: false,
-                        Children: [{
-                            Id: '311',
-                            Title: '3ο ΣΑ ',
-                            Color: '',
-                            InOverview: false,
-                            Type: 0,
-                            Children: []
-                        }]
-                    }
-                ]
-            }
-
-        ];
-
-
-
-        $httpBackend.whenGET('/api/nodes')
-                    .respond(nodes);
-
-        let views = [
-            {
-                Id: '112',
-                Html: '<span>IT WORKS ! (its alive?)</span>',
-                Files: []
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
             },
             {
                 Id: '22',
-                Html: '',
-                Files: [
+                Parent: '2',
+                Title: 'ΒΙΒΛΙΟΘΗΚΗ ΕΠΙΧΕΙΡΗΣΕΩΝ',
+                Color: { Red: 80, Green: 140, Blue: 255 },
+                Index: 1,
+                Type: 1,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: [
                     {
                         Id: '22f1',
                         Description: 'MNHMONIO AA'
@@ -206,27 +173,91 @@ angular
                         Description: 'MNHMONIO ΑΞΚΟΥ ΕΠΧΣΕΩΝ'
                     }
                 ]
-            }
+            },
+            {
+                Id: '3',
+                Parent: null,
+                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
+                Color: { Red: 80, Green: 140, Blue: 255 },
+                Index: 2,
+                Type: 0,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: null
+            },
         ];
 
-        $httpBackend.whenRoute('GET', '/api/nodes/:id')
-                    .respond(function (method, url, data, headers, params) {
-                        return [200, views.find(x => x.Id == params.id)];
-                    });
+        function toTree(nodesArray, root) {
+            let tree = $filter('filter')(nodesArray, function (n) { return n.Parent == root });
+            for (var i in tree) {
+                let node = tree[i];
+                node.Children = toTree(nodesArray, node.Id);
+            }
 
+            return tree;
+        }
+        
         // function searchTree(tree, id) {
         //     for (let i in tree) {
         //         let node = tree[i];
-        //         console.log(node);
         //         if (node.Id == id) {
         //             return node;
         //         }
-        //         return searchTree(node.Children, id);
+        //         if (node.Children.length ) {
+        //             let child = searchTree(node.Children, id);
+        //             if (child) {
+        //                 return child;
+        //             }
+        //         }
         //     }
         //     return null;
         // }
 
-        $httpBackend.whenGET(/.*/).passThrough();
+        // authService //
+        $httpBackend.whenGET('/api/users')
+                    .respond(users);
+                    
+        $httpBackend.whenGET('/api/roles')
+                    .respond(roles);
+        
+
+        // nodesService //                    
+        $httpBackend.whenGET('/api/nodes')
+                    .respond(function (method, url, data, headers, params) {
+                        let tree = toTree(nodes, null);
+                        return [200, tree];
+                    });
+
+        $httpBackend.whenRoute('GET', '/api/nodes/:id')
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        return node ? [200, node] : [500, '', { data: 'Node not found'}];
+                    });
+        
+        $httpBackend.whenRoute('PUT', '/api/nodes/:id')
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        if (node) {
+                            node = data;
+                        }
+                        return node ? [200, node] : [500, '', { data: 'Node not found'}];
+                    });
+
+        $httpBackend.whenRoute('DELETE', '/api/nodes/:id')
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        if (node) {
+                            nodes.splice(nodes.indexOf(node), 1);
+                            return [200, node];
+                        }
+                        return [500, '','Node not found'];
+                    });
+
+        // ignore everything else //
+        $httpBackend.whenGET(/.*/)
+                    .passThrough();
     });
 
 export default mocks;
