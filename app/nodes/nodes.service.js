@@ -1,4 +1,5 @@
 class nodesService {
+
     constructor($http, api, toastService) {
         'ngInject'
 
@@ -15,6 +16,14 @@ class nodesService {
         return Array.from(this._nodes.values());
     }
 
+    get nodeTypes() {
+        return [
+            { Id: 0, Description: "Προβολή" },
+            { Id: 1, Description: "Βιβλιοθήκη" },
+            { Id: 2, Description: "Φόρμα" }
+        ];
+    }
+
     getNode(id) {
         return this.$http({
             method: 'GET',
@@ -29,9 +38,23 @@ class nodesService {
     }
 
     insertNode(node) {
-        if (!this._nodes.has(node.Id)) {
-            this._nodes.set(node.Id, node);
+        if (this._nodes.has(node.Id)) {
+            this.toastService.error('There is already a node with this Id in the collection');
         }
+        
+        return this.$http({
+            method: 'POST',
+            url: '/api/nodes',
+            data: node
+        })
+        .then( (response) => {
+            let _node = response.data;
+            this._nodes.set(_node.Id, _node.data);
+            return this._nodes.get(_node.Id);
+        })
+        .catch( (error) => {
+            this.toastService.error(error.data);
+        });
     }
 
     updateNode(node) {
@@ -47,7 +70,7 @@ class nodesService {
     }
 
     getNodes() {
-        this.$http({
+        return this.$http({
             method: 'GET',
             url: '/api/nodes'
         })
@@ -56,6 +79,7 @@ class nodesService {
             for (let m in response.data) {
                 this._nodes.set(response.data[m].Id, response.data[m]);
             }
+            return this._nodes;
         })
         .catch( (error) => {
             this.toastService.error(error.data);

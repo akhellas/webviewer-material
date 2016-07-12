@@ -182,7 +182,7 @@ angular
 
         ];
 
-
+        
 
         $httpBackend.whenGET('/api/nodes')
                     .respond(nodes);
@@ -190,11 +190,22 @@ angular
         let views = [
             {
                 Id: '112',
+                Data: '<span>IT WORKS ! (its alive?)</span>',
                 Html: '<span>IT WORKS ! (its alive?)</span>',
                 Files: []
             },
             {
                 Id: '22',
+                Data: [
+                    {
+                        Id: '22f1',
+                        Description: 'MNHMONIO AA'
+                    },
+                    {
+                        Id: '22f2',
+                        Description: 'MNHMONIO ΑΞΚΟΥ ΕΠΧΣΕΩΝ'
+                    }
+                ],
                 Html: '',
                 Files: [
                     {
@@ -211,20 +222,32 @@ angular
 
         $httpBackend.whenRoute('GET', '/api/nodes/:id')
                     .respond(function (method, url, data, headers, params) {
-                        return [200, views.find(x => x.Id == params.id)];
+                        let node = searchTree(nodes, params.id);
+                        let view = views.find(x => x.Id == params.id);
+                        if (node && view) {
+                            node = angular.copy(node);
+                            node.Data = view.Data;
+                            return [200, node];
+                        }
+                        return [500, '','Node not found'];
                     });
 
-        // function searchTree(tree, id) {
-        //     for (let i in tree) {
-        //         let node = tree[i];
-        //         console.log(node);
-        //         if (node.Id == id) {
-        //             return node;
-        //         }
-        //         return searchTree(node.Children, id);
-        //     }
-        //     return null;
-        // }
+        function searchTree(tree, id) {
+            for (let i in tree) {
+                let node = tree[i];
+                console.log(node);
+                if (node.Id == id) {
+                    return node;
+                }
+                if (node.Children.length ) {
+                    let child = searchTree(node.Children, id);
+                    if (child) {
+                        return child;
+                    }
+                }
+            }
+            return null;
+        }
 
         $httpBackend.whenGET(/.*/).passThrough();
     });
