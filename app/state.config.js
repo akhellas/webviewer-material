@@ -33,7 +33,6 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       url: "/users",
       templateUrl: "app/admin/views/admin.users.html"
     })
-
     .state('nodes', {
       abstract: true,
       url: '/nodes',

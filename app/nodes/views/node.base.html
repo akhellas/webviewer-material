@@ -1,7 +1,9 @@
-<div layout="row">
+<div layout="column" flex>
 
-    <div flex><h2>{{details.node.Id}}</h2></div>
-
+    <div flex>
+        <h2>{{details.node.Id}}</h2>
+    </div>
+    <div ng-include="'app/nodes/views/node.form.html'">></div>
     <div ng-if="details.node.Html != undefined && details.node.Html != ''" ng-include="'app/nodes/views/node.simple.html'"></div>
     <div ng-if="details.node.Files.length > 0" ng-include="'app/nodes/views/node.library.html'"></div>
 </div>

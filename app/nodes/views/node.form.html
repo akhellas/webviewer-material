@@ -1,0 +1,77 @@
+<div layout="row" layout-align="center center">
+    <md-card flex ng-cloak>
+        <table style="width:100%;" border="1">
+            <tr style="background-color:rgb(140,158,255);text-align:center;">
+                <td style="padding:20px 0px 20px 0px">ΕΙΣΟΔΟΣ</td>
+                <td>ΕΞΟΔΟΣ</td>
+                <td>ΣΧΜ</td>
+                <td colspan="3">Α/ΦΗ Ε/Π</td>
+                <td colspan="3">ΠΑΡΑΒ/ΣΕΙΣ</td>
+                <td colspan="3">ΑΝΩΘ</td>
+                <td>ΟΠΛΑ</td>
+                <td>ΕΜΠΛΟΚΗ</td>
+                <td>ΑΝΧ</td>
+            </tr>
+            <tr ng-repeat="item in details.data">
+                <td style="padding:10px 0px 10px 0px">{{item.Entry}}</td>
+                <td>{{item.Exit}}</td>
+                <td>{{item.Units}}</td>
+                <!--colspan 3-->
+                <td>{{item.UnitTypes[0].no1}}</td>
+                <td>{{item.UnitTypes[0].no2}}</td>
+                <td>{{item.UnitTypes[0].no3}}</td>
+                <!--colspan 3-->
+                <td>{{item.BreachPoint.no1}}</td>
+                <td>{{item.BreachPoint.no1}}</td>
+                <td>{{item.BreachPoint.no1}}</td>
+                <!--colspan 3-->
+                <td>{{item.unknown.no1}}</td>
+                <td>{{item.unknown.no1}}</td>
+                <td>{{item.unknown.no1}}</td>
+                <td>{{item.Weapons}}</td>
+                <td>{{item.Engage}}</td>
+                <td>{{item.Interception}}</td>
+            </tr>
+            <tr style="background-color:rgb(140,158,255);text-align:center;">
+                <td rowspan="2" colspan="2">ΣΥΝΟΛΑ ΣΧΗΜΑΤΙΣΜΩΝ</td>
+                <td style="padding:10px 0px 10px 0px">ΣΧΜ</td>
+                <td rowspan="2" colspan="3"></td>
+                <td colspan="3">ΠΑΡΑΒ/ΣΕΙΣ</td>
+                <td colspan="3">ΑΝΩΘ</td>
+                <td>ΟΠΛΑ</td>
+                <td>ΕΜΠΛΟΚΕΣ</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr style="text-align:center;">
+                <td style="padding:20px 0px 20px 0px">0</td>
+                <td colspan="3">0</td>
+                <td colspan="3">0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td colspan="15" style="padding-top:15px!important;background-color:lightgrey"></td>
+            </tr>
+        </table>
+        <table style="width:100%;" border="1">
+            <tr>
+
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td colspan="15" style="padding-top:15px!important;background-color:lightgrey"></td>
+            </tr>
+            <tr style="background-color:rgb(140,158,255);text-align:center;">
+                <td>ΠΑΡΑΒΙΑΣΕΙΣ</td>
+            </tr>
+            <tr style="background-color:rgb(140,158,255);text-align:center;">
+                <td>ΕΛΑΧ. ΑΠΟΣΤ. ΠΑΡΑΒ/ΣΗΣ</td>
+            </tr>
+            <tr style="background-color:rgb(140,158,255);text-align:center;">
+                <td>ΠΑΡΑΤΗΡΗΣΕΙΣ</td>
+            </tr>
+        </table>
+    </md-card>
+</div>
