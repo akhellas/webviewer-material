@@ -186,8 +186,29 @@ angular
                     User: null
                 },
                 Data: null
-            },
+            }
         ];
+
+        let incidents = {
+            Incidents: [
+                {
+                    Entry: '',
+                    Exit: '',
+                    Units: [
+                        { Count: 0, Type: 0 },
+                        { Count: 0, Type: 0 },
+                    ],
+                    Violations: ['1', '2'],
+                    FlyOvers: [],
+                    Weapons: '',
+                    Engage: '',
+                    Interception: ''
+                }
+            ],
+            ViolationRemarks: '',
+            MinimumViolationDistance: '',
+            Remarks: ''
+        };
 
         function toTree(nodesArray, root) {
             let tree = $filter('filter')(nodesArray, function (n) { return n.Parent == root });
