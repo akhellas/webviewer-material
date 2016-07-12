@@ -190,7 +190,22 @@ angular
         let views = [
             {
                 Id: '112',
-                Html: '<h1>IT WORKS ! (its alive?)</h1>'
+                Html: '<span>IT WORKS ! (its alive?)</span>',
+                Files: []
+            },
+            {
+                Id: '22',
+                Html: '',
+                Files: [
+                    {
+                        Id: '22f1',
+                        Description: 'MNHMONIO AA'
+                    },
+                    {
+                        Id: '22f2',
+                        Description: 'MNHMONIO ΑΞΚΟΥ ΕΠΧΣΕΩΝ'
+                    }
+                ]
             }
         ];
 

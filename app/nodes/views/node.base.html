@@ -1,11 +1,7 @@
 <div layout="row">
 
-    <div flex><h2>Node Details</h2></div>
-    <div flex>
-        <span>{{details.node.Id}}</span>
-    </div>
+    <div flex><h2>{{details.node.Id}}</h2></div>
 
-    <div flex>
-        <div ng-bind="details.node.Html"></div>
-    </div>
+    <div ng-if="details.node.Html != undefined && details.node.Html != ''" ng-include="'app/nodes/views/node.simple.html'"></div>
+    <div ng-if="details.node.Files.length > 0" ng-include="'app/nodes/views/node.library.html'"></div>
 </div>

@@ -1,7 +1,7 @@
 <div layout="column">
 
     <div flex>
-        <md-button ngf-select="library.upload($file)">Upload</md-button>
+        <md-button ngf-select="details.upload($file)">Upload</md-button>
     </div>
 
     <div flex>
@@ -13,8 +13,8 @@
 
         <md-content>
             <md-list>
-                <md-list-item ng-repeat="file in library.files">
-                    <div class="md-list-item-text">{{file.lfDataUrl}}</div>
+                <md-list-item ng-repeat="file in details.node.Files">
+                    <div class="md-list-item-text">{{file.Description}}</div>
                 </md-list-item>
             </md-list>
         </md-content>
