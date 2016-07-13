@@ -1,6 +1,6 @@
 <div ng-repeat="node in layout.nodes">
     <md-toolbar class="md-hue-2"
-                style="min-height: 50px !important; height: 50px !important; background-color: rgb({{node.Color.red}},{{node.Color.green}},{{node.Color.blue}}) ">
+                style="min-height: 50px !important; height: 50px !important; background-color: rgb({{node.Color.Red}},{{node.Color.Green}},{{node.Color.Blue}}) ">
         <div class="md-toolbar-tools">
             <md-button aria-label="{{node.Title}}" ng-click="layout.$state.go('nodes.detail', { id: node.Id })">
                 <span><strong>{{node.Title}}</strong></span>
