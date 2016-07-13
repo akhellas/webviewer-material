@@ -1,14 +1,12 @@
-<div layout="column" flex>
-    <md-card>
-        <md-toolbar layout="row" layout-align="space-between center">
-            <div class="md-toolbar-tools">
-                <span>Προβολή</span>
-            </div>
-            <md-button class="md-primary md-fab md-mini md-hue-3" ngf-select="details.upload($file)" title="Αρχείο"><i class="fa fa-upload fa-lg" aria-hidden="true"></i></md-button>
-            </md-button>
-        </md-toolbar>
-        <div layout="row" layout-align="center center">
-            <h1>Περιεχόμενο html</h1>
+<md-card>
+    <md-toolbar layout="row" layout-align="space-between center">
+        <div class="md-toolbar-tools">
+            <span>{{details.node.Title}}</span>
         </div>
-    </md-card>
-</div>
+        <md-button class="md-primary md-fab md-mini md-hue-3" ngf-select="details.upload($file)" title="Αρχείο"><i class="fa fa-upload fa-lg" aria-hidden="true"></i></md-button>
+        </md-button>
+    </md-toolbar>
+    <div layout="row" layout-align="center center">
+        <h1>Περιεχόμενο html</h1>
+    </div>
+</md-card>

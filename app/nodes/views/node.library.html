@@ -1,21 +1,19 @@
-<div layout="column" flex>
-    <md-card>
-        <md-toolbar layout="row" layout-align="space-between center">
-            <div class="md-toolbar-tools">
-                <span>Files</span>
-            </div>
-            <md-button class="md-primary md-fab md-mini md-hue-3" ngf-select="details.upload($file)" title="Αρχείο"><i class="fa fa-upload fa-lg" aria-hidden="true"></i></md-button>
-            <md-button class="md-primary md-fab md-mini md-hue-3" ng-click="details.editMode=!details.editMode" title="Αρχείο"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></i>
-            </md-button>
-        </md-toolbar>
-        <md-content>
-            <md-list ng-cloak>
-                <md-list-item class="noright" ng-repeat="file in details.node.Data">
-                    <div class="md-list-item-text">{{$index+1}}.</div>
-                    <div class="md-list-item-text" style="padding-left:5px">{{file.Description}}</div>
-                    <md-button ng-show="details.editMode" class="md-secondary  md-raised md-warn" style="min-width:30px!important; "><b>x</b></md-button>
-                </md-list-item>
-            </md-list>
-        </md-content>
-    </md-card>
-</div>
+<md-card>
+    <md-toolbar layout="row" layout-align="space-between center">
+        <div class="md-toolbar-tools">
+            <span>{{details.node.Title}}</span>
+        </div>
+        <md-button class="md-primary md-fab md-mini md-hue-3" ngf-select="details.upload($file)" title="Αρχείο"><i class="fa fa-upload fa-lg" aria-hidden="true"></i></md-button>
+        <md-button class="md-primary md-fab md-mini md-hue-3" ng-click="details.editMode=!details.editMode" title="Αρχείο"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></i>
+        </md-button>
+    </md-toolbar>
+    <md-content>
+        <md-list ng-cloak>
+            <md-list-item class="noright" ng-repeat="file in details.node.Data">
+                <div class="md-list-item-text">{{$index+1}}.</div>
+                <div class="md-list-item-text" style="padding-left: 5px">{{file.Description}}</div>
+                <md-button ng-show="details.editMode" class="md-secondary  md-raised md-warn" style="min-width: 30px !important; "><b>x</b></md-button>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-card>
