@@ -1,102 +1,101 @@
+<md-card flex ng-cloak>
 
-    <md-card flex ng-cloak>
-        <md-toolbar layout="row" layout-align="space-between center">
-            <div class="md-toolbar-tools">
-                <span>{{details.node.Title}}</span>
-            </div>
-        </md-toolbar>
-        <table style="width:100%;">
-            <tr style="background-color:rgb(140,158,255);text-align:center;">
-                <td style="padding:20px 0px 20px 0px">ΕΙΣΟΔΟΣ</td>
-                <td>ΕΞΟΔΟΣ</td>
-                <td>ΣΧΜ</td>
-                <td colspan="3">Α/ΦΗ Ε/Π</td>
-                <td colspan="3">ΠΑΡΑΒ/ΣΕΙΣ</td>
-                <td colspan="3">ΑΝΩΘ</td>
-                <td>ΟΠΛΑ</td>
-                <td>ΕΜΠΛΟΚΗ</td>
-                <td>ΑΝΧ</td>
-            </tr>
-            <tr ng-repeat="item in details.incidents.Incidents">
-                <td style="padding:10px 0px 10px 0px">{{item.Entry}}</td>
-                <td>{{item.Exit}}</td>
-                <td>{{item.Units.Length}}</td>
-                <!--colspan 3-->
-                <td colspan="3" ><span ng-repeat="subitem in item.Units">{{subitem.Count}}x{{subitem.Type}} </span></td>
-                
-                <!--colspan 3-->
-                <td>{{item.BreachPoint.no1}}</td>
-                <td>{{item.BreachPoint.no1}}</td>
-                <td>{{item.BreachPoint.no1}}</td>
-                <!--colspan 3-->
-                <td>{{item.unknown.no1}}</td>
-                <td>{{item.unknown.no1}}</td>
-                <td>{{item.unknown.no1}}</td>
-                <td>{{item.Weapons}}</td>
-                <td>{{item.Engage}}</td>
-                <td>{{item.Interception}}</td>
-            </tr>
-            <tr style="background-color:rgb(140,158,255);text-align:center;">
-                <td rowspan="2" colspan="2">ΣΥΝΟΛΑ ΣΧΗΜΑΤΙΣΜΩΝ</td>
-                <td style="padding:10px 0px 10px 0px">ΣΧΜ</td>
-                <td rowspan="2" colspan="3"></td>
-                <td colspan="3">ΠΑΡΑΒ/ΣΕΙΣ</td>
-                <td colspan="3">ΑΝΩΘ</td>
-                <td>ΟΠΛΑ</td>
-                <td>ΕΜΠΛΟΚΕΣ</td>
-                <td rowspan="2"></td>
-            </tr>
-            <tr style="text-align:center;">
-                <td style="padding:20px 0px 20px 0px">0</td>
-                <td colspan="3">0</td>
-                <td colspan="3">0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td colspan="15" style="padding-top:15px!important;background-color:lightgrey"></td>
-            </tr>
-        </table>
-        <table style="width:100%">
-            <tr style="background-color:rgb(140,158,255);text-align:center;">
-                <td rowspan="2" style="padding:40px 0px 40px 0px">ΣΥΝΟΛΑ ΑΦΩΝ</td>
-                <td>F-16</td>
-                <td>F-4</td>
-                <td>CN-235</td>
-                <td>KC-135</td>
-                <td>AB-412</td>
-                <td>AB-212</td>
-                <td>S-70</td>
-                <td>E/Π</td>
-                <td>ΣΥΝΟΛΟ ΑΦΩΝ</td>
-                <td>ΣΥΝΟΛΟ Ε/Π</td>
-            </tr>
-            <tr style="text-align:center;">
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td colspan="15" style="padding-top:15px!important;background-color:lightgrey"></td>
-            </tr>
-            <tr style="text-align:center;">
-                <td style="background-color:rgb(140,158,255)">ΠΑΡΑΒΙΑΣΕΙΣ</td>
-                <td colspan="10"></td>
-            </tr>
-            <tr style="text-align:center;">
-                <td style="background-color:rgb(140,158,255)">ΕΛΑΧ. ΑΠΟΣΤ. ΠΑΡΑΒ/ΣΗΣ</td>
-                <td colspan="10"></td>
-            </tr>
-            <tr style=";text-align:center;">
-                <td style="background-color:rgb(140,158,255)">ΠΑΡΑΤΗΡΗΣΕΙΣ</td>
-                <td colspan="10"></td>
-            </tr>
-        </table>
-    </md-card>
+    <md-toolbar layout="row" layout-align="space-between center">
+        <div class="md-toolbar-tools">
+            <span>{{details.node.Title}}</span>
+        </div>
+    </md-toolbar>
+
+    <table style="width: 100%;">
+        <tr style="background-color: rgb(140,158,255); text-align: center">
+            <td style="padding: 20px 0px 20px 0px">ΕΙΣΟΔΟΣ</td>
+            <td>ΕΞΟΔΟΣ</td>
+            <td>ΣΧΜ</td>
+            <td colspan="3">Α/ΦΗ Ε/Π</td>
+            <td colspan="3">ΠΑΡΑΒΙΑΣΕΙΣ</td>
+            <td colspan="3">ΑΝΩΘΕΝ</td>
+            <td>ΟΠΛΑ</td>
+            <td>ΕΜΠΛΟΚΗ</td>
+            <td>ΑΝΧ</td>
+        </tr>
+        <tr ng-repeat="item in details.node.Data.Incidents" style="text-align: center">
+            <td style="padding: 10px 0px 10px 0px">{{item.Entry}}</td>
+            <td>{{item.Exit}}</td>
+            <td>{{item.Units.length}}</td>
+            <td colspan="3"><span ng-repeat="subitem in item.Units">{{subitem.Count}}x{{subitem.Type}}{{$last ? '' : ', '}}</span></td>
+            <td>{{item.BreachPoint.no1}}</td>
+            <td>{{item.BreachPoint.no1}}</td>
+            <td>{{item.BreachPoint.no1}}</td>
+            <td>{{item.unknown.no1}}</td>
+            <td>{{item.unknown.no1}}</td>
+            <td>{{item.unknown.no1}}</td>
+            <td>{{item.Weapons}}</td>
+            <td>{{item.Engage}}</td>
+            <td>{{item.Interception}}</td>
+        </tr>
+        <tr style="background-color: rgb(140,158,255); text-align: center">
+            <td rowspan="2" colspan="2">ΣΥΝΟΛΑ ΣΧΗΜΑΤΙΣΜΩΝ</td>
+            <td style="padding: 10px 0px 10px 0px">ΣΧΜ</td>
+            <td rowspan="2" colspan="3"></td>
+            <td colspan="3">ΠΑΡΑΒΙΑΣΕΙΣ</td>
+            <td colspan="3">ΑΝΩΘΕΝ</td>
+            <td>ΟΠΛΑ</td>
+            <td>ΕΜΠΛΟΚΕΣ</td>
+            <td rowspan="2"></td>
+        </tr>
+        <tr style="text-align: center">
+            <td style="padding: 20px 0px 20px 0px">{{details.sumFormations()}}</td>
+            <td colspan="3"></td>
+            <td colspan="3">0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td colspan="15" style="padding-top: 15px !important; background-color: lightgrey"></td>
+        </tr>
+    </table>
+
+    <table style="width: 100%">
+        <tr style="background-color: rgb(140,158,255); text-align: center">
+            <td rowspan="2" style="padding: 40px 0px 40px 0px">ΣΥΝΟΛΑ ΑΦΩΝ</td>
+            <td>F-16</td>
+            <td>F-4</td>
+            <td>CN-235</td>
+            <td>KC-135</td>
+            <td>AB-412</td>
+            <td>AB-212</td>
+            <td>S-70</td>
+            <td>E/Π</td>
+            <td>ΣΥΝΟΛΟ ΑΦΩΝ</td>
+            <td>ΣΥΝΟΛΟ Ε/Π</td>
+        </tr>
+        <tr style="text-align: center">
+            <td>{{details.sumAcType('F-16')}}</td>
+            <td>{{details.sumAcType('F-4')}}</td>
+            <td>{{details.sumAcType('CN-235')}}</td>
+            <td>{{details.sumAcType('KC-135')}}</td>
+            <td>{{details.sumAcType('AB-412')}}</td>
+            <td>{{details.sumAcType('AB-212')}}</td>
+            <td>{{details.sumAcType('S-70')}}</td>
+            <td>{{details.sumAcType('E/Π')}}</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td colspan="15" style="padding-top: 15px !important; background-color: lightgrey"></td>
+        </tr>
+        <tr style="text-align: center">
+            <td style="background-color: rgb(140,158,255)">ΠΑΡΑΒΙΑΣΕΙΣ</td>
+            <td colspan="10"></td>
+        </tr>
+        <tr style="text-align: center">
+            <td style="background-color: rgb(140,158,255)">ΕΛΑΧΙΣΤΗ ΑΠΟΣΤΑΣΗ ΠΑΡΑΒΙΑΣΗΣ</td>
+            <td colspan="10"></td>
+        </tr>
+        <tr style="text-align: center">
+            <td style="background-color: rgb(140,158,255)">ΠΑΡΑΤΗΡΗΣΕΙΣ</td>
+            <td colspan="10"></td>
+        </tr>
+    </table>
+
+</md-card>

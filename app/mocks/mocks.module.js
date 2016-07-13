@@ -140,17 +140,30 @@ angular
                 Data: {
                     Incidents: [
                         {
-                            Entry: '',
-                            Exit: '',
+                            Entry: 'GA452',
+                            Exit: 'GE0423',
                             Units: [
-                                { Count: 0, Type: 0 },
-                                { Count: 0, Type: 0 },
+                                { Count: 2, Type: 'F-16' },
+                                { Count: 4, Type: 'F-4' },
                             ],
                             Violations: ['1', '2'],
-                            FlyOvers: [],
-                            Weapons: '',
-                            Engage: '',
-                            Interception: ''
+                            FlyOvers: ['Χιος','Σάμος'],
+                            Weapons: '0',
+                            Engage: '0',
+                            Interception: '0'
+                        },
+                        {
+                            Entry: 'GA454',
+                            Exit: 'GE0425',
+                            Units: [
+                                { Count: 2, Type: 'F-16' },
+                                { Count: 4, Type: 'F-4' },
+                            ],
+                            Violations: ['1', '2'],
+                            FlyOvers: ['Χιος','Σάμος'],
+                            Weapons: '0',
+                            Engage: '0',
+                            Interception: '0'
                         }
                     ],
                     ViolationRemarks: '',

@@ -1,27 +1,20 @@
 class nodeController {
+
     constructor(node) {
         this.node = node;
+    }
 
-        this.incidents = {
-            Incidents: [
-                {
-                    Entry: 'GA452',
-                    Exit: 'GE0423',
-                    Units: [
-                        { Count: 2, Type: 'F-16' },
-                        { Count: 4, Type: 'F-4' },
-                    ],
-                    Violations: ['1', '2'],
-                    FlyOvers: ['Χιος','Σάμος'],
-                    Weapons: 'ΟΧΙ',
-                    Engage: 'ΝΑΙ',
-                    Interception: 'ΝΑΙ'
-                }
-            ],
-            ViolationRemarks: '',
-            MinimumViolationDistance: '',
-            Remarks: ''
-        };
+    sumFormations() {
+        return this.sumIncidents( (f) => { return f.Units.length; });
+    }
+
+    sumAcType(acType) {
+        return this.sumIncidents( (f) => { let t = f.Units.find(x => x.Type == acType); return t == null ? 0 : t.Count; });
+    }
+
+    sumIncidents(cbField) {
+        let incidents = this.node.Data.Incidents;
+        return incidents ? incidents.reduce((a, b) => cbField(a) + cbField(b)) : 0;
     }
 
 }
