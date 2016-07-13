@@ -1,4 +1,4 @@
-<md-list ng-repeat="node in layout.nodes">
+<div ng-repeat="node in layout.nodes">
     <md-toolbar class="md-toolbar-tools" class="md-hue-2" style="min-height: 50px !important; height: 50px !important;padding:0px; background-color: rgb({{node.Color.Red}},{{node.Color.Green}},{{node.Color.Blue}}) ">
         <md-list-item aria-label="{{node.Title}}" ng-click="layout.$state.go('nodes.detail', { id: node.Id })" flex>
             <div layout="row" layout-align="space-between center " flex>
@@ -14,8 +14,7 @@
     </md-toolbar>
     <md-content ng-show="!toggle[$index]">
         <md-subheader ng-repeat-start="child in node.Children">
-            <md-list layout="row">
-                <md-list-item style=color:red aria-label="{{child.Title}}" ng-click="layout.$state.go('nodes.detail', { id: child.Id })" flex>
+                <md-list-item  aria-label="{{child.Title}}" ng-click="layout.$state.go('nodes.detail', { id: child.Id })" flex>
                     <div layout="row" layout-align="space-between center " flex>
                         <span><strong>{{child.Title}}</strong></span>
                         <md-button class="md-icon-button" aria-label="Toggle" ng-click="toggleC[$index] = !toggleC[$index]" ng-show="child.Children.length > 0">
@@ -23,9 +22,6 @@
                         </md-button>
                     </div>
                 </md-list-item>
-            </md-list>
-
-
         </md-subheader>
         <md-list ng-show="!toggleC[$index]">
             <div ng-repeat="grandChild in child.Children">
@@ -37,4 +33,4 @@
         <span ng-repeat-end></span>
     </md-content>
 
-</md-list>
+</div>
