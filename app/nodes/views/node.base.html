@@ -1,9 +1,4 @@
 <div layout="column" flex>
-
-    <div flex>
-        <h2>{{details.node.Id}}</h2>
-    </div>
-    <div ng-include="'app/nodes/views/node.form.html'">></div>
     <div ng-if="details.node.Type == 0" ng-include="'app/nodes/views/node.simple.html'"></div>
     <div ng-if="details.node.Type == 1" ng-include="'app/nodes/views/node.library.html'"></div>
     <div ng-if="details.node.Type == 2" ng-include="'app/nodes/views/node.form.html'"></div>
