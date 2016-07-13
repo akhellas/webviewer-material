@@ -209,7 +209,7 @@ angular
             {
                 Id: '3',
                 Parent: null,
-                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR',
+                Title: 'ΚΑΤΑΣΤΑΣΗ RADAR lalala lal lal ala lal al lal',
                 Color: { Red: 80, Green: 140, Blue: 255 },
                 Index: 2,
                 Type: 0,

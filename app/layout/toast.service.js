@@ -1,4 +1,5 @@
 class toastService {
+    
     constructor($mdToast) {
         'ngInject'
 
