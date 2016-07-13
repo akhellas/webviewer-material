@@ -11,6 +11,7 @@ class layoutController {
         this.isRightOpen = false;
 
         this.theme = {
+            toolbars: 'md-hue-2',
             buttons: {
                 add: '',
                 edit: '',
