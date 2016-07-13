@@ -88,7 +88,7 @@ class nodesService {
     }
 
     updateNode(node) {
-        if (!this._node.has(node.Id)) {
+        if (!this._nodes.has(node.Id)) {
             this.toastService.error('Unknown node');
         }
 
@@ -108,7 +108,7 @@ class nodesService {
     }
 
     deleteNode(node) {
-        if (!this._node.has(node.Id)) {
+        if (!this._nodes.has(node.Id)) {
             this.toastService.error('Unknown node');
         }
         
@@ -118,7 +118,7 @@ class nodesService {
             data: node
         })
         .then( (response) => {
-            this._nodes.delete(_node.Id);
+            this._nodes.delete(node.Id);
             this.toastService.info('Node was removed from the collection');
             return this.nodes;
         })
