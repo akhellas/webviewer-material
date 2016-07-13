@@ -21,7 +21,7 @@
         </md-subheader>
         <md-list ng-show="!toggleC[$index]">
             <div ng-repeat="grandChild in child.Children">
-                <md-list-item aria-label="" ng-click="layout.$state.go('nodes.detail', { id: grandChild.Id })">
+                <md-list-item aria-label="{{grandChild.Title}}" ng-click="layout.$state.go('nodes.detail', { id: grandChild.Id })">
                     <span style="padding-left: 10px; font-size: smaller">{{grandChild.Title}}</span>
                 </md-list-item>
             </div>
