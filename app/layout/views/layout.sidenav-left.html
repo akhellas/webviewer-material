@@ -1,33 +1,40 @@
-<div ng-repeat="node in layout.nodes">
-    <md-toolbar class="md-hue-2"
-                style="min-height: 50px !important; height: 50px !important; background-color: rgb({{node.Color.Red}},{{node.Color.Green}},{{node.Color.Blue}}) ">
-        <div class="md-toolbar-tools">
-            <md-button aria-label="{{node.Title}}" ng-click="layout.$state.go('nodes.detail', { id: node.Id })">
-                <span><strong>{{node.Title}}</strong></span>
-            </md-button>
-            <span flex></span>
-            <md-button class="md-icon-button" aria-label="s" ng-click="toggle[$index] = !toggle[$index]">
-                <i class="fa fa-lg" ng-class="{'fa-toggle-off': toggle[$index], 'fa-toggle-on': !toggle[$index]}"></i>
-            </md-button>
-        </div>
+<md-list ng-repeat="node in layout.nodes">
+    <md-toolbar class="md-toolbar-tools" class="md-hue-2" style="min-height: 50px !important; height: 50px !important;padding:0px; background-color: rgb({{node.Color.Red}},{{node.Color.Green}},{{node.Color.Blue}}) ">
+        <md-list-item aria-label="{{node.Title}}" ng-click="layout.$state.go('nodes.detail', { id: node.Id })" flex>
+            <div layout="row" layout-align="space-between center " flex>
+                <div layout="row " layout-align="start none ">
+                    <strong> {{node.Title}}</strong>
+                </div>
+                <md-button class="md-icon-button" aria-label="s" ng-click="toggle[$index] = !toggle[$index]">
+                    <i class="fa fa-lg" ng-class="{'fa-toggle-off': toggle[$index], 'fa-toggle-on': !toggle[$index]}"></i>
+                </md-button>
+            </div>
+        </md-list-item>
+
     </md-toolbar>
     <md-content ng-show="!toggle[$index]">
         <md-subheader ng-repeat-start="child in node.Children">
-            <md-button class="md-warn" aria-label="{{child.Title}}" ng-click="layout.$state.go('nodes.detail', { id: child.Id })">
-                <span><strong>{{child.Title}}</strong></span>
-            </md-button>
-            <span flex></span>
-            <md-button class="md-icon-button" aria-label="Toggle" ng-click="toggleC[$index] = !toggleC[$index]" ng-show="child.Children.length > 0">
-                <i class="fa fa-lg" ng-class="{'fa-toggle-off': toggleC[$index], 'fa-toggle-on': !toggleC[$index]}"></i>
-            </md-button>
+            <md-list layout="row">
+                <md-list-item style=color:red aria-label="{{child.Title}}" ng-click="layout.$state.go('nodes.detail', { id: child.Id })" flex>
+                    <div layout="row" layout-align="space-between center " flex>
+                        <span><strong>{{child.Title}}</strong></span>
+                        <md-button class="md-icon-button" aria-label="Toggle" ng-click="toggleC[$index] = !toggleC[$index]" ng-show="child.Children.length > 0">
+                            <i class="fa fa-lg" ng-class="{'fa-toggle-off': toggleC[$index], 'fa-toggle-on': !toggleC[$index]}"></i>
+                        </md-button>
+                    </div>
+                </md-list-item>
+            </md-list>
+
+
         </md-subheader>
         <md-list ng-show="!toggleC[$index]">
-            <md-list-item ng-repeat="grandChild in child.Children">
-                <md-button aria-label="" ng-click="layout.$state.go('nodes.detail', { id: grandChild.Id })">
+            <div ng-repeat="grandChild in child.Children">
+                <md-list-item aria-label="" ng-click="layout.$state.go('nodes.detail', { id: grandChild.Id })">
                     <span>{{grandChild.Title}}</span>
-                </md-button>
-            </md-list-item>
+                </md-list-item>
+            </div>
         </md-list>
         <span ng-repeat-end></span>
     </md-content>
-</div>
+
+</md-list>

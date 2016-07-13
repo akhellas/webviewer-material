@@ -12,14 +12,13 @@
                 <td>ΕΜΠΛΟΚΗ</td>
                 <td>ΑΝΧ</td>
             </tr>
-            <tr ng-repeat="item in details.data">
+            <tr ng-repeat="item in details.incidents.Incidents">
                 <td style="padding:10px 0px 10px 0px">{{item.Entry}}</td>
                 <td>{{item.Exit}}</td>
-                <td>{{item.Units}}</td>
+                <td>{{item.Units.Length}}</td>
                 <!--colspan 3-->
-                <td>{{item.UnitTypes[0].no1}}</td>
-                <td>{{item.UnitTypes[0].no2}}</td>
-                <td>{{item.UnitTypes[0].no3}}</td>
+                <td colspan="3" ><span ng-repeat="subitem in item.Units">{{subitem.Count}}x{{subitem.Type}} </span></td>
+                
                 <!--colspan 3-->
                 <td>{{item.BreachPoint.no1}}</td>
                 <td>{{item.BreachPoint.no1}}</td>

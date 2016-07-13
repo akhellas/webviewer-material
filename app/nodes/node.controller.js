@@ -1,21 +1,21 @@
 class nodeController {
     constructor(node) {
         this.node = node;
-        
+
         this.incidents = {
             Incidents: [
                 {
-                    Entry: '',
-                    Exit: '',
+                    Entry: 'GA452',
+                    Exit: 'GE0423',
                     Units: [
-                        { Count: 0, Type: 0 },
-                        { Count: 0, Type: 0 },
+                        { Count: 2, Type: 'F-16' },
+                        { Count: 4, Type: 'F-4' },
                     ],
                     Violations: ['1', '2'],
-                    FlyOvers: [],
-                    Weapons: '',
-                    Engage: '',
-                    Interception: ''
+                    FlyOvers: ['Χιος','Σάμος'],
+                    Weapons: 'ΟΧΙ',
+                    Engage: 'ΝΑΙ',
+                    Interception: 'ΝΑΙ'
                 }
             ],
             ViolationRemarks: '',
