@@ -127,6 +127,38 @@ angular
                 Data: null
             },
             {
+                Id: '12',
+                Parent: '1',
+                Title: 'ΤΟΥΡΚΙΚΗ ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
+                Color: null,
+                Index: 0,
+                Type: 2,
+                LastUpdate: {
+                    Date: null,
+                    User: null
+                },
+                Data: {
+                    Incidents: [
+                        {
+                            Entry: '',
+                            Exit: '',
+                            Units: [
+                                { Count: 0, Type: 0 },
+                                { Count: 0, Type: 0 },
+                            ],
+                            Violations: ['1', '2'],
+                            FlyOvers: [],
+                            Weapons: '',
+                            Engage: '',
+                            Interception: ''
+                        }
+                    ],
+                    ViolationRemarks: '',
+                    MinimumViolationDistance: '',
+                    Remarks: ''
+                }
+            },
+            {
                 Id: '2',
                 Parent: null,
                 Title: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ',
