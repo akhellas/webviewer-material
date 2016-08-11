@@ -19,6 +19,10 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       url: "/nodes",
       templateUrl: "app/admin/views/admin.nodes.html"
     })
+    .state('admin.views', {
+      url: "/views",
+      templateUrl: "app/admin/views/admin.views.html"
+    })
     .state('admin.banner', {
       url: "/banner",
       templateUrl: "app/admin/views/admin.banner.html"
@@ -46,7 +50,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
       resolve: {
         node: function ($stateParams, nodesService) {
           return nodesService.getNode($stateParams.id)
-                             .then((response) => { return response; });
+            .then((response) => { return response; });
         }
       }
     });

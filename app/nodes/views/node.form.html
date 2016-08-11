@@ -4,7 +4,9 @@
         <div class="md-toolbar-tools" flex>
             <span>{{details.node.Title}}</span>
         </div>
-        <md-button class="md-fab md-mini md-primary md-hue-3"><i class="fa fa-plus" aria-hidden="true"></i></md-button>
+        <md-button class="md-fab md-mini md-primary md-hue-3" aria-label="Newinput" ng-click="details.openNewEntry=!details.openNewEntry" ng-disabled="details.openNewEntry">
+            <i class="fa fa-plus" aria-hidden="true" ></i>
+            </md-button>
     </md-toolbar>
 
     <table style="width: 100%;">
@@ -96,13 +98,13 @@
     </table>
 
 </md-card>
-<md-card flex=50>
+<md-card flex ng-if="details.openNewEntry">
     <md-toolbar class="md-toolbar-tools">
         <span flex>Νέα Εγγραφή</span>
         <md-button class="md-fab md-mini md-primary md-hue-3" ng-click="" title="Αποθήκευση" aria-label="Newinput">
             <i class="fa fa-check" aria-hidden="true"></i>
         </md-button>
-        <md-button class="md-fab md-mini md-warn" ng-click="" aria-label="cancel" title="Ακύρωση">
+        <md-button class="md-fab md-mini md-warn" ng-click="details.cancelNewEntry()" aria-label="cancel" title="Ακύρωση">
             <i class="fa fa-times" aria-hidden="true"></i>
         </md-button>
     </md-toolbar>
@@ -110,17 +112,31 @@
         <div layout-gt-sm="row">
             <md-input-container flex>
                 <label>Είσοδος</label>
-                <input ng-model="details.newEntry.Entry">
+                <input type="text" ng-model="details.newEntry.Entry">
             </md-input-container>
             <md-input-container flex>
                 <label>Έξοδος</label>
-                <input ng-model="details.newEntry.Exit">
+                <input type="text" ng-model="details.newEntry.Exit">
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container flex>
+                <label>Όπλα</label>
+                <input type="number" step="any" ng-model="details.newEntry.Weapons" />
+            </md-input-container>
+            <md-input-container flex>
+                <label>Εμπλοκή</label>
+                <input type="number" step="any" ng-model="details.newEntry.Engage" />
+            </md-input-container>
+            <md-input-container flex>
+                <label>Αναχαίτιση</label>
+                <input type="number" step="any" ng-model="details.newEntry.Interception" />
             </md-input-container>
         </div>
         <div layout-gt-sm="row" ng-repeat="units in details.newEntry.Units">
             <md-input-container>
                 <label>Αριθμός Αεροσκαφών</label>
-                <input type="number" step="any" ng-model="details.newEntry.Units[$index].Count" min="0" max="20" />
+                <input type="number" ng-model="details.newEntry.Units[$index].Count" />
             </md-input-container>
             <md-input-container flex>
                 <label>Τύπος Αεροσκαφών</label>
@@ -135,44 +151,34 @@
                 <i class="fa fa-times fa-lg" aria-hidden="true"></i>
             </md-button>
         </div>
-        <div layout-gt-sm="row">
-            <md-input-container flex>
-                <label>Όπλα</label>
-                <input type="number" step="any" ng-model="details.newEntry.Weapons" min="0" max="20" />
-            </md-input-container>
-            <md-input-container flex>
-                <label>Εμπλοκή</label>
-                <input type="number" step="any" ng-model="details.newEntry.Engage" min="0" max="20" />
-            </md-input-container>
-            <md-input-container flex>
-                <label>Αναχαίτιση</label>
-                <input type="number" step="any" ng-model="details.newEntry.Interception" min="0" max="20" />
-            </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-            <div ng-repeat="item in details.newEntry.Violations">
-                <md-input-container flex>
-                    <label>Παραβιάσεις</label>
-                    <input type="number" step="any" ng-model="details.newEntry.Violations[$index]" min="0" max="20" />
-                </md-input-container>
-                <md-button class="md-fab md-mini md-primary md-hue-3" ng-if="$first" aria-label="add" title="Περισσότερα" ng-click="details.addViolations()">
-                    <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
-                </md-button>
-                <md-button class="md-fab md-mini md-warn" ng-if="!$first" aria-label="add" title="Αφαίρεση" ng-click="details.removeViolations($index)">
-                    <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-                </md-button>
+        <div layout-gt-sm="row" flex>
+            <div layout-gt-sm="column" flex="50">
+                <div layout-gt-sm="row" ng-repeat="itemV in details.newEntry.Violations">
+                    <md-input-container flex>
+                        <label>Παραβιάσεις</label>
+                        <input type="number"  ng-model="details.newEntry.Violations[$index]" />
+                    </md-input-container>
+                    <md-button class="md-fab md-mini md-primary md-hue-3" ng-if="$first" aria-label="add" title="Περισσότερα" ng-click="details.addViolations()">
+                        <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-warn" ng-if="!$first" aria-label="add" title="Αφαίρεση" ng-click="details.removeViolations($index)">
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                </div>
             </div>
-            <div ng-repeat="item in details.newEntry.FlyOvers">
-                <md-input-container flex>
-                    <label>Άνωθεν</label>
-                    <input type="number" step="any" ng-model="details.newEntry.FlyOvers[$index]" min="0" max="20" />
-                </md-input-container>
-                <md-button class="md-fab md-mini md-primary md-hue-3" ng-if="$first" aria-label="add" title="Περισσότερα" ng-click="details.addFlyOvers()">
-                    <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
-                </md-button>
-                <md-button class="md-fab md-mini md-warn" ng-if="!$first" aria-label="add" title="Αφαίρεση" ng-click="details.removeFlyOvers($index)">
-                    <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-                </md-button>
+            <div layout-gt-sm="column" flex="50">
+                <div layout-gt-sm="row" ng-repeat="itemF in details.newEntry.FlyOvers">
+                    <md-input-container flex>
+                        <label>Άνωθεν</label>
+                        <input type="number" ng-model="details.newEntry.FlyOvers[$index]"  />
+                    </md-input-container>
+                    <md-button class="md-fab md-mini md-primary md-hue-3" ng-if="$first" aria-label="add" title="Περισσότερα" ng-click="details.addFlyOvers()">
+                        <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-warn" ng-if="!$first" aria-label="add" title="Αφαίρεση" ng-click="details.removeFlyOvers($index)">
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                </div>
             </div>
         </div>
     </div>

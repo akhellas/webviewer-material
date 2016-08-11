@@ -3,15 +3,20 @@ class adminController {
         this.nodesService = nodesService;
         this.nodes = nodesService.nodes;
 
-        this.TypeEnum = [{
-            Id: 0,
-            Description: 'Προβολή'
-        },
+        this.TypeEnum = [
+
+
+            {
+                Id: 0,
+                Description: 'Προβολή'
+            },
             {
                 Id: 1,
                 Description: 'Βιβλιοθήκη'
             }];
 
+
+        
         // Variables to open edit for each category
         this._editCategory = true;
         this._editSubCategory1 = true;

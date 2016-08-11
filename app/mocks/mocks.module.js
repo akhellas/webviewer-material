@@ -6,7 +6,7 @@ angular
     .module('app.mocks')
     .run(function ($httpBackend, $filter) {
         'ngInject'
-        
+
         let users = [
             {
                 Id: '1',
@@ -33,37 +33,37 @@ angular
                 Id: '1',
                 Title: 'ΚΕΠΙΧ',
                 Description: 'bla',
-                Rights: [{ _Id: '21',Title:'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false },{ _Id: '41',Title:'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }],
-                Users:[{Id:'U1',Description:'Περπερίδης Νικόλαος (66040)'},{Id:'U1',Description:'Πέτρου Γεώργιος (35744)'},{Id:'U1',Description:'Πλεμμένου Χρίστινα (46321)'},{Id:'U1',Description:'Αλεξανδροπούλου Βούλα (45637)'}
-                ,{Id:'U1',Description:'Ευστρατίου Ευστράτιος (65423)'},{Id:'U1',Description:'Παρασκευής Νικόλαος (12345)'}]
+                Rights: [{ _Id: '21', Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ', Edit: true, View: false }, { _Id: '41', Title: 'ΒΟΛΕΣ ΠΝ & ΣΞ', Edit: true, View: true }],
+                Users: [{ Id: 'U1', Description: 'Περπερίδης Νικόλαος (66040)' }, { Id: 'U1', Description: 'Πέτρου Γεώργιος (35744)' }, { Id: 'U1', Description: 'Πλεμμένου Χρίστινα (46321)' }, { Id: 'U1', Description: 'Αλεξανδροπούλου Βούλα (45637)' }
+                    , { Id: 'U1', Description: 'Ευστρατίου Ευστράτιος (65423)' }, { Id: 'U1', Description: 'Παρασκευής Νικόλαος (12345)' }]
             },
             {
                 Id: '2',
                 Title: 'ΕΠΙΧΕΙΡΗΣΕΙΣ',
                 Description: 'bla',
                 Rights: [],
-                Users:[]
+                Users: []
             },
             {
                 Id: '3',
                 Title: 'ΗΓΕΣΙΑ',
                 Description: 'bla',
                 Rights: [],
-                Users:[]
+                Users: []
             },
             {
                 Id: '4',
                 Title: 'ΔΙΑΧΕΙΡΙΣΤΕΣ',
                 Description: 'bla',
                 Rights: [],
-                Users:[]
+                Users: []
             }
         ];
 
         let nodes = [
             {
                 Id: '1',
-                Parent: null, 
+                Parent: null,
                 Title: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ',
                 Color: { Red: 80, Green: 140, Blue: 255 },
                 Index: 0,
@@ -147,7 +147,7 @@ angular
                                 { Count: 4, Type: 'F-4' },
                             ],
                             Violations: ['1', '2'],
-                            FlyOvers: ['Χιος','Σάμος'],
+                            FlyOvers: ['Χιος', 'Σάμος'],
                             Weapons: '0',
                             Engage: '0',
                             Interception: '0'
@@ -160,7 +160,7 @@ angular
                                 { Count: 4, Type: 'F-4' },
                             ],
                             Violations: ['1', '2'],
-                            FlyOvers: ['Χιος','Σάμος'],
+                            FlyOvers: ['Χιος', 'Σάμος'],
                             Weapons: '0',
                             Engage: '0',
                             Interception: '0'
@@ -255,6 +255,25 @@ angular
             Remarks: ''
         };
 
+        let customViews = [{
+            Id: '21321',
+            Description: 'ΤΟΥΡΚΙΚΗ ΚΑΤΑΣΤΑΣΗ',
+            nodeViews: [
+                {
+                    Id: '1',
+                    Description: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
+                },
+                {
+                    Id: '21',
+                    Description: 'ΒΟΛΕΣ ΠΝ & ΣΞ'
+                },
+                {
+                    Id: '12',
+                    Description: 'ΤΟΥΡΚΙΚΗ ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
+                }
+            ]
+        }];
+
         function toTree(nodesArray, root) {
             let tree = $filter('filter')(nodesArray, function (n) { return n.Parent == root });
             for (var i in tree) {
@@ -264,7 +283,7 @@ angular
 
             return tree;
         }
-        
+
         // function searchTree(tree, id) {
         //     for (let i in tree) {
         //         let node = tree[i];
@@ -283,47 +302,51 @@ angular
 
         // authService //
         $httpBackend.whenGET('/api/users')
-                    .respond(users);
-                    
+            .respond(users);
+
         $httpBackend.whenGET('/api/roles')
-                    .respond(roles);
-        
+            .respond(roles);
+
+        $httpBackend.whenGET('/api/views')
+            .respond(customViews);
+
+
 
         // nodesService //                    
         $httpBackend.whenGET('/api/nodes')
-                    .respond(function (method, url, data, headers, params) {
-                        let tree = toTree(nodes, null);
-                        return [200, tree];
-                    });
+            .respond(function (method, url, data, headers, params) {
+                let tree = toTree(nodes, null);
+                return [200, tree];
+            });
 
         $httpBackend.whenRoute('GET', '/api/nodes/:id')
-                    .respond(function (method, url, data, headers, params) {
-                        let node = nodes.find(x => x.Id == params.id);
-                        return node ? [200, node] : [500, '', { data: 'Node not found'}];
-                    });
-        
+            .respond(function (method, url, data, headers, params) {
+                let node = nodes.find(x => x.Id == params.id);
+                return node ? [200, node] : [500, '', { data: 'Node not found' }];
+            });
+
         $httpBackend.whenRoute('PUT', '/api/nodes/:id')
-                    .respond(function (method, url, data, headers, params) {
-                        let node = nodes.find(x => x.Id == params.id);
-                        if (node) {
-                            node = data;
-                        }
-                        return node ? [200, node] : [500, '', { data: 'Node not found'}];
-                    });
+            .respond(function (method, url, data, headers, params) {
+                let node = nodes.find(x => x.Id == params.id);
+                if (node) {
+                    node = data;
+                }
+                return node ? [200, node] : [500, '', { data: 'Node not found' }];
+            });
 
         $httpBackend.whenRoute('DELETE', '/api/nodes/:id')
-                    .respond(function (method, url, data, headers, params) {
-                        let node = nodes.find(x => x.Id == params.id);
-                        if (node) {
-                            nodes.splice(nodes.indexOf(node), 1);
-                            return [200, node];
-                        }
-                        return [500, '','Node not found'];
-                    });
+            .respond(function (method, url, data, headers, params) {
+                let node = nodes.find(x => x.Id == params.id);
+                if (node) {
+                    nodes.splice(nodes.indexOf(node), 1);
+                    return [200, node];
+                }
+                return [500, '', 'Node not found'];
+            });
 
         // ignore everything else //
         $httpBackend.whenGET(/.*/)
-                    .passThrough();
+            .passThrough();
     });
 
 export default mocks;

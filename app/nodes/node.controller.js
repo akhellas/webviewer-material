@@ -13,9 +13,9 @@ class nodeController {
             { Id: 7, Description: 'Ε/Π' }
         ];
         this.newEntry = {
-            Violations: [{}],
+            Violations: [0],
             Units: [{}],
-            FlyOvers: [{}]
+            FlyOvers: [0]
         };
     }
     // form code
@@ -24,12 +24,12 @@ class nodeController {
         });
     }
 
-     addViolations() {
+    addViolations() {
         this.newEntry.Violations.push({
         });
     }
-    
-     addFlyOvers() {
+
+    addFlyOvers() {
         this.newEntry.FlyOvers.push({
         });
     }
@@ -38,16 +38,24 @@ class nodeController {
         this.newEntry.Units.splice(index, 1);
     }
 
-     removeFlyOvers(index) {
+    removeFlyOvers(index) {
         this.newEntry.FlyOvers.splice(index, 1);
     }
 
-     removeViolations(index) {
+    removeViolations(index) {
         this.newEntry.Violations.splice(index, 1);
     }
 
     pushNewEntry() {
-
+        this.openNewEntry = !this.openNewEntry
+    }
+    cancelNewEntry() {
+        this.openNewEntry = !this.openNewEntry
+        this.newEntry = {
+            Violations: [0],
+            Units: [{}],
+            FlyOvers: [0]
+        };
     }
     // end of form code
     sumFormations() {
