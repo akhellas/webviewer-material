@@ -1,3 +1,51 @@
-<div ng-controller="viewController as view"">
-{{view.views}}
+<div ng-controller="viewController as view">
+    <md-card flex layout="column">
+        <!--toolbar-->
+        <md-toolbar class="md-primary" layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools">
+                <span>Προβολές</span>
+            </div>
+            <md-button class="md-fab md-mini md-primary md-hue-3" ng-click="view.newView=!view.newView" ng-hide="" title="Προσθήκη Νέας Προβολής"
+                aria-label="addView">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </md-button>
+        </md-toolbar>
+        <div layout="row" layout-padding>
+            <md-content flex="30">
+                <md-subheader>Διαθέσιμες Προβολές</md-subheader>
+                <md-list class="md-dense" ng-style="{ 'background-color': view.editOn || view.addright? 'lightgray':null}">
+                    <md-list-item class="md-no-sticky" ng-repeat="item in view.views" ng-click="view.nodeSelected=$index" ng-style="{'background-color':view.nodeSelected==$index ? 'rgb(140,158,255)':null}">
+                        <i class="fa fa-eye" aria-hidden="true "></i>
+                        <p>{{ item.Description }}</p>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+            <md-divider vertical></md-divider>
+            <md-contect ng-show="!view.newView" flex>
+                <md-subheader>Δημιουργία νέας προβολή </md-subheader>
+                <div>
+                    <md-input-container>
+                        <label>Τίτλος</label>
+                        <input ng-model="view.newViewer.Description">
+                    </md-input-container>
+                    <!--<md-input-container class="md-block" flex-gt-sm>
+                        <label>Κατηγορίες</label>
+                        <md-select ng-model="user.state">
+                            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                                {{state.abbrev}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>-->
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Δικαιώματα</label>
+                        <md-select ng-model="view.newViewer.Rights">
+                            <md-option ng-repeat="item in view.nodesService" >
+                                {{item.Description}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </md-contect>
+        </div>
+    </md-card>
 </div>
