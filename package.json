@@ -21,5 +21,10 @@
       "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.6.0",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.93"
     }
+  },
+  "devDependencies": {
+    "jspm": "^0.16.45",
+    "jspm-local": "^1.0.2",
+    "jspm-server": "^1.0.1"
   }
 }

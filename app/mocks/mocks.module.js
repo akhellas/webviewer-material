@@ -302,51 +302,51 @@ angular
 
         // authService //
         $httpBackend.whenGET('/api/users')
-            .respond(users);
+                    .respond(users);
 
         $httpBackend.whenGET('/api/roles')
-            .respond(roles);
+                    .respond(roles);
 
         $httpBackend.whenGET('/api/views')
-            .respond(customViews);
+                    .respond(customViews);
 
 
 
         // nodesService //                    
         $httpBackend.whenGET('/api/nodes')
-            .respond(function (method, url, data, headers, params) {
-                let tree = toTree(nodes, null);
-                return [200, tree];
-            });
+                    .respond(function (method, url, data, headers, params) {
+                        let tree = toTree(nodes, null);
+                        return [200, tree];
+                    });
 
         $httpBackend.whenRoute('GET', '/api/nodes/:id')
-            .respond(function (method, url, data, headers, params) {
-                let node = nodes.find(x => x.Id == params.id);
-                return node ? [200, node] : [500, '', { data: 'Node not found' }];
-            });
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        return node ? [200, node] : [500, '', { data: 'Node not found' }];
+                    });
 
         $httpBackend.whenRoute('PUT', '/api/nodes/:id')
-            .respond(function (method, url, data, headers, params) {
-                let node = nodes.find(x => x.Id == params.id);
-                if (node) {
-                    node = data;
-                }
-                return node ? [200, node] : [500, '', { data: 'Node not found' }];
-            });
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        if (node) {
+                            node = data;
+                        }
+                        return node ? [200, node] : [500, '', { data: 'Node not found' }];
+                    });
 
         $httpBackend.whenRoute('DELETE', '/api/nodes/:id')
-            .respond(function (method, url, data, headers, params) {
-                let node = nodes.find(x => x.Id == params.id);
-                if (node) {
-                    nodes.splice(nodes.indexOf(node), 1);
-                    return [200, node];
-                }
-                return [500, '', 'Node not found'];
-            });
+                    .respond(function (method, url, data, headers, params) {
+                        let node = nodes.find(x => x.Id == params.id);
+                        if (node) {
+                            nodes.splice(nodes.indexOf(node), 1);
+                            return [200, node];
+                        }
+                        return [500, '', 'Node not found'];
+                    });
 
         // ignore everything else //
         $httpBackend.whenGET(/.*/)
-            .passThrough();
+                    .passThrough();
     });
 
 export default mocks;
