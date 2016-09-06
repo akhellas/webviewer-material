@@ -1,8 +1,17 @@
 class viewController {
-    constructor($scope, nodesService) {
+    constructor($scope, nodesService, authService) {
         this.$scope = $scope;
+
         this.nodesService = nodesService;
-        this.views = [
+        this.authService = authService;
+        this.category={};
+        this.role={};
+        this.nodes = [];
+        this.nodeRights = [];
+        this.accessRoles = [];
+        this.categoriesForView = [];
+
+        this.customViews = [
             {
                 Id: '21321',
                 Description: 'ΤΟΥΡΚΙΚΗ ΚΑΤΑΣΤΑΣΗ',
@@ -22,27 +31,44 @@ class viewController {
                 ]
             },
             {
-                Id: '542',
-                Description: 'ΠΡΟΒΟΛΗ RADAR',
+                Id: '523',
+                Description: 'ΚΑΤΑΣΤΑΣΗ RADAR',
                 nodeViews: [
                     {
                         Id: '1',
-                        Description: 'ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
+                        Description: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
                     },
                     {
                         Id: '21',
-                        Description: 'ΑΤΑ'
+                        Description: 'ΒΟΛΕΣ ΠΝ & ΣΞ'
                     },
                     {
                         Id: '12',
-                        Description: 'ΕΠΧΣΕΙΣ-ΑΣΚΗΣΕΙΣ'
+                        Description: 'ΤΟΥΡΚΙΚΗ ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
+                    }
+                ]
+            },
+            {
+                Id: '123',
+                Description: 'ΠΡΟΒΟΛΗ ΜΑΧΗΣ',
+                nodeViews: [
+                    {
+                        Id: '1',
+                        Description: 'ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
+                    },
+                    {
+                        Id: '21',
+                        Description: 'ΒΟΛΕΣ ΠΝ & ΣΞ'
+                    },
+                    {
+                        Id: '12',
+                        Description: 'ΤΟΥΡΚΙΚΗ ΠΤΗΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ'
                     }
                 ]
             }
-
         ];
 
-
+        this.$scope.$watch('view.authService.roles', (x) => this.rolesChanged(x), true);
         this.$scope.$watch('view.nodesService.nodes', (x) => this.nodesChanged(x), true);
     }
     nodesChanged(newValue, oldValue) {
@@ -51,9 +77,23 @@ class viewController {
         }
     }
 
+    rolesChanged(newValue, oldValue) {
+        if (newValue != undefined && newValue != oldValue) {
+            this.nodeRights = newValue;
+        }
+    }
 
-
-
-
+    addCategory() {
+        this.categoriesForView.push({
+            Id: this.category.Id,
+            Title: this.category.Title
+        })
+    }
+    addRole() {
+        this.accessRoles.push({
+            Title:role.Title
+        })
+    }
 }
+
 export default viewController;

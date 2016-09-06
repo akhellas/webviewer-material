@@ -14,36 +14,70 @@
             <md-content flex="30">
                 <md-subheader>Διαθέσιμες Προβολές</md-subheader>
                 <md-list class="md-dense" ng-style="{ 'background-color': view.editOn || view.addright? 'lightgray':null}">
-                    <md-list-item class="md-no-sticky" ng-repeat="item in view.views" ng-click="view.nodeSelected=$index" ng-style="{'background-color':view.nodeSelected==$index ? 'rgb(140,158,255)':null}">
+                    <md-list-item class="md-no-sticky" ng-repeat="item in view.customViews" ng-click="view.nodeSelected=$index" ng-style="{'background-color':view.nodeSelected==$index ? 'rgb(140,158,255)':null}">
                         <i class="fa fa-eye" aria-hidden="true "></i>
-                        <p>{{ item.Description }}</p>
+                        <p style="padding-left:5px">{{ item.Description }}</p>
                     </md-list-item>
                 </md-list>
             </md-content>
             <md-divider vertical></md-divider>
-            <md-contect ng-show="!view.newView" flex>
+            <md-contect ng-show="!view.newView" layout="column" flex>
                 <md-subheader>Δημιουργία νέας προβολή </md-subheader>
-                <div>
-                    <md-input-container>
+                <div layout="row" flex>
+                    <md-input-container class="md-block" flex="30">
                         <label>Τίτλος</label>
                         <input ng-model="view.newViewer.Description">
                     </md-input-container>
-                    <!--<md-input-container class="md-block" flex-gt-sm>
-                        <label>Κατηγορίες</label>
-                        <md-select ng-model="user.state">
-                            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                                {{state.abbrev}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>-->
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex="30">
                         <label>Δικαιώματα</label>
-                        <md-select ng-model="view.newViewer.Rights">
-                            <md-option ng-repeat="item in view.nodesService" >
-                                {{item.Description}}
+                        <md-select ng-model="view.role">
+                            <md-option ng-repeat="item in view.nodeRights" value="{{item}}">
+                                {{item.Title}}
                             </md-option>
                         </md-select>
                     </md-input-container>
+                    <md-input-container class="md-block" flex="5">
+                        <md-button class="md-icon-button" aria-label="More" ng-click="view.addRole()">
+                            <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+                        </md-button>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="30">
+                        <label>Κατηγορίες</label>
+                        <md-select ng-model="view.category">
+                            <div ng-repeat="node in view.nodes">
+                                <md-option value="{{this.node}}">{{node.Title}}</md-option>
+                                <div ng-repeat="subNode in node.Children">
+                                    <md-option value="{{subNode.Title}}"> - {{subNode.Title}}</md-option>
+                                    <div ng-repeat="item in subNode.Children">
+                                        <md-option value="{{item.Title}}"><i class="fa fa-circle" aria-hidden="true" style="padding-left:10px"></i>
+                                            <span style="padding-left:5px">{{item.Title}}</span>
+                                        </md-option>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="5">
+                        <md-button class="md-raised  md-primary" ng-click="view.addCategory()" style="min-width:30px!important;font-size:22px">+</md-button>
+                    </md-input-container>
+                </div>
+                <div layout="row" flex>
+                    <div flex>
+                        <md-list class="md-dense">
+                            <md-subheader class="md-no-sticky">Δικαιώματα Προβολής</md-subheader>
+                            <md-list-item class="md-no-sticky" ng-repeat="item in view.accessRoles">
+                                <p>{{item.Title}}</p>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                    <div flex>
+                        <md-list class="md-dense">
+                            <md-subheader class="md-no-sticky">Κατηγορίες Προβολής</md-subheader>
+                            <md-list-item class="md-no-sticky" ng-repeat="item in view.categoriesForView">
+                                <p>{{item.Title}}</p>
+                            </md-list-item>
+                        </md-list>
+                    </div>
                 </div>
             </md-contect>
         </div>
