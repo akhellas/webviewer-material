@@ -10,7 +10,6 @@ class nodesService {
         this._nodes = new Map();
 
         this.getNodes();
-        
     }
 
     get nodes() {
